@@ -1,5 +1,6 @@
-namespace App.Presentation;
-using App.Business;
+namespace Presentation.Menu;
+
+using Presentation.Gestor;
 
 class MenuUsuario : GestorOpciones
 {
@@ -19,7 +20,7 @@ class MenuUsuario : GestorOpciones
     public string MenuTrabajador()
     {
 
-        Console.WriteLine($"Cuenta Trabajador : {Trabajadores.Cuenta}");
+        Console.WriteLine($"Cuenta Trabajador : {NombreTrabajador}");
         Console.WriteLine("1) Anadir Producto");
         Console.WriteLine("2) Modificar Producto");
         Console.WriteLine("3) Eliminar Producto");
@@ -31,7 +32,7 @@ class MenuUsuario : GestorOpciones
 
     public string MenuBasicasUsuario()
     {
-        Console.WriteLine($"Cuenta de :{Usuarios.Cuenta} Dinero:{Usuarios.Dinero}");
+        Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
         Console.WriteLine("1) Opciones de Cuenta");
         Console.WriteLine("2) Carrito");
         Console.WriteLine("3) Lista de Productos");
@@ -44,7 +45,7 @@ class MenuUsuario : GestorOpciones
 
     public string MenuAvanzadasUsuario()
     {
-
+        Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
         Console.WriteLine("1) Cambiar Nombre");
         Console.WriteLine("2) Cambiar Contraseña");
         Console.WriteLine("3) AgragarDinero");

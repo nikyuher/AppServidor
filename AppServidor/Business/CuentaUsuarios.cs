@@ -1,5 +1,5 @@
-﻿namespace App.Business;
-using App.Data;
+﻿namespace Business.Usuarios;
+using Data.Cuentas;
 
 public class CuentaUsuarios
 {

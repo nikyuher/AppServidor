@@ -1,16 +1,16 @@
-﻿namespace App.Data;
+﻿namespace Data.Cuentas;
 
 using System.Text.Json;
 using System.IO;
 using System.Collections.Generic;
 
-public class DatosUsuario
+public class DatosCuentas
 
 {
 
     public string archivo = "RegistroUsuarios.json";
 
-    public DatosUsuario()
+    public DatosCuentas()
     {
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
     }

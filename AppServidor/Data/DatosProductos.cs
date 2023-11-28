@@ -1,4 +1,4 @@
-namespace Data;
+namespace Data.Productos;
 
 using System.Text.Json;
 using System.IO;

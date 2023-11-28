@@ -1,5 +1,6 @@
-namespace App.Business;
-using App.Data;
+namespace Business.Trabajadores;
+using Data.Productos;
+using Data.Cuentas;
 
 public class CuentaTrabajadores
 {

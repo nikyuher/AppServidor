@@ -1,6 +1,7 @@
-namespace App.Presentation;
+namespace Presentation.Gestor;
 
-using App.Business;
+using Business.Trabajadores;
+using Business.Usuarios;
 
 public class GestorOpciones
 {
@@ -8,9 +9,10 @@ public class GestorOpciones
     public CuentaUsuarios? Usuarios { get; set; }
     public CuentaUsuarios? Trabajadores { get; set; }
 
-    public string? NombreUsuario{get;set;}
-    public string? NombreTrabajador{get;set;}
-
+    public string? NombreUsuario { get; set; }
+    public string? NombreTrabajador { get; set; }
+    public decimal DineroUsuario { get; set; }
+    
     protected List<CuentaUsuarios> ListaUsuarios = new List<CuentaUsuarios>() { };
     protected List<CuentaTrabajadores> ListaTrabajadores = new List<CuentaTrabajadores>() { };
 
