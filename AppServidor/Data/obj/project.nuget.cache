@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DtG5AV2RdDKyKinAct21vNgQLT3tbL706v1c23gr+LeHdOSk11Pzqm1qbBnsJJf8RhCCSuRlqlO2yHBB3ixu8w==",
+  "dgSpecHash": "V9ScuDKwir7hDIuO3r9Y6dle9x87uvvRT4FagxQUt3MpxJtNuGIwgmsR0W+VdouQSUGEWU0bDSj9xnu0kijfiA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Data\\App.Data.csproj",
+  "projectFilePath": "D:\\App\\AppServidor\\Data\\App.Data.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
