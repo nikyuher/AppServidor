@@ -10,9 +10,12 @@ public class DatosCuentas
 
     public string archivo = "RegistroUsuarios.json";
 
+    private List<Object> ListaUsuarios;
+    private JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
     public DatosCuentas()
     {
-        JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
     }
 
     public void CargarJSON()
@@ -21,7 +24,8 @@ public class DatosCuentas
         {
             if (File.Exists(archivo))
             {
-
+                string? contenido = File.ReadAllText(archivo);
+                ListaUsuarios = JsonSerializer.Deserialize<List<Object>>(contenido, options);
             }
         }
         catch (Exception e)
@@ -36,7 +40,8 @@ public class DatosCuentas
         {
             if (File.Exists(archivo))
             {
-
+                string jsonString = JsonSerializer.Serialize(ListaUsuarios, options);
+                File.WriteAllText(archivo, jsonString);
             }
         }
         catch (Exception e)

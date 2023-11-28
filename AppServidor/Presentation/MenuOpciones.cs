@@ -5,15 +5,12 @@ using Business;
 public class MenuOpciones
 {
 
-    public CuentaUsuarios? Usuarios { get; set; }
-    public CuentaUsuarios? Trabajadores { get; set; }
+    private CuentaUsuarios? Usuarios { get; set; }
+    private CuentaUsuarios? Trabajadores { get; set; }
 
     public string? NombreUsuario { get; set; }
     public string? NombreTrabajador { get; set; }
     public decimal DineroUsuario { get; set; }
-
-    protected List<CuentaUsuarios> ListaUsuarios = new List<CuentaUsuarios>() { };
-    protected List<CuentaTrabajadores> ListaTrabajadores = new List<CuentaTrabajadores>() { };
 
     public MenuOpciones()
     {
@@ -30,6 +27,37 @@ public class MenuOpciones
                 break;
 
             case 1:
+                Console.Write("Ingresa tu Cuenta: ");
+                string? cuenta = Console.ReadLine();
+
+                NombreUsuario = cuenta;
+
+                break;
+
+            case 2:
+
+                Console.WriteLine("Escribe el nombre de tu Cuenta");
+                string? nombre = Console.ReadLine();
+
+                NombreUsuario = nombre;
+
+                break;
+
+            case 3:
+                break;
+        }
+    }
+
+    public void MenuTrabajador(int opcion)
+    {
+        switch (opcion)
+        {
+
+            case 0:
+
+                break;
+
+            case 1:
 
                 break;
 
@@ -37,6 +65,57 @@ public class MenuOpciones
                 break;
 
             case 3:
+                break;
+        }
+    }
+
+    public void MenuBasicoUsuario(int opcion)
+    {
+        switch (opcion)
+        {
+
+            case 0:
+
+                break;
+
+            case 1:
+
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+        }
+    }
+
+    public void MenuAvanzadasUsuario(int opcion)
+    {
+        switch (opcion)
+        {
+
+            case 0:
+
+                break;
+
+            case 1:
+
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 6:
                 break;
         }
     }

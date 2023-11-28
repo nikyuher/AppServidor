@@ -8,10 +8,13 @@ public class CuentaTrabajadores
     public string? Cuenta { get; set; }
     protected string? Constrasena { get; set; }
 
+    public List<CuentaTrabajadores> ListaTrabajadores = new List<CuentaTrabajadores>() { };
+
     private static int SumadorIds = 1;
 
     public CuentaTrabajadores()
     {
+        
         IdCuenta = SumadorIds;
         SumadorIds++;
     }

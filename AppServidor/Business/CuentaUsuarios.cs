@@ -8,7 +8,7 @@ public class CuentaUsuarios
     public string? Cuenta { get; set; }
     protected string? Constrasena { get; set; }
     public decimal Dinero { get; set; }
-
+    
     private static int SumadorIds = 1;
 
     public CuentaUsuarios()

@@ -28,7 +28,7 @@ class MenuDiseño : MenuOpciones
         return opcion ?? "";
     }
 
-    public string MenuBasicasUsuario()
+    public string MenuBasicoUsuario()
     {
         Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
         Console.WriteLine("1) Opciones de Cuenta");
