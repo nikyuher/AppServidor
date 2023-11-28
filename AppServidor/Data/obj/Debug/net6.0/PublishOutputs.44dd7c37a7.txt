@@ -1,0 +1,3 @@
+C:\Users\nico_\Desktop\AppServidor\AppServidor\app\App.Data.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\app\App.Data.deps.json
+C:\Users\nico_\Desktop\AppServidor\AppServidor\app\App.Data.pdb

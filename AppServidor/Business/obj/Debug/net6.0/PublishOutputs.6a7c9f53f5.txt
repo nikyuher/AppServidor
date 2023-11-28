@@ -1,0 +1,5 @@
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Debug\net6.0\publish\App.Business.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Debug\net6.0\publish\App.Business.deps.json
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Debug\net6.0\publish\App.Business.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Debug\net6.0\publish\App.Data.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Debug\net6.0\publish\App.Data.pdb

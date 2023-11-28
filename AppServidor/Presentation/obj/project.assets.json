@@ -1,0 +1,106 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "App.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "App.Data": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/App.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/App.Business.dll": {}
+        }
+      },
+      "App.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/App.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/App.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "App.Business/1.0.0": {
+      "type": "project",
+      "path": "../Business/App.Business.csproj",
+      "msbuildProject": "../Business/App.Business.csproj"
+    },
+    "App.Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/App.Data.csproj",
+      "msbuildProject": "../Data/App.Data.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "App.Business >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\nico_\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Presentation\\App.Presentation.csproj",
+      "projectName": "App.Presentation",
+      "projectPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Presentation\\App.Presentation.csproj",
+      "packagesPath": "C:\\Users\\nico_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Presentation\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\nico_\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Business\\App.Business.csproj": {
+              "projectPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Business\\App.Business.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.319\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

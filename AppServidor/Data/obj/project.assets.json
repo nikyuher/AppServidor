@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\AppServidor.csproj",
-      "projectName": "AppServidor",
-      "projectPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\AppServidor.csproj",
+      "projectUniqueName": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Data\\App.Data.csproj",
+      "projectName": "App.Data",
+      "projectPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Data\\App.Data.csproj",
       "packagesPath": "C:\\Users\\nico_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\obj\\",
+      "outputPath": "C:\\Users\\nico_\\Desktop\\AppServidor\\AppServidor\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nico_\\AppData\\Roaming\\NuGet\\NuGet.Config"
