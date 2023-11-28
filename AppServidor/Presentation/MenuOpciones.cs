@@ -1,9 +1,8 @@
-namespace Presentation.Gestor;
+namespace Presentation;
 
-using Business.Trabajadores;
-using Business.Usuarios;
+using Business;
 
-public class GestorOpciones
+public class MenuOpciones
 {
 
     public CuentaUsuarios? Usuarios { get; set; }
@@ -12,9 +11,14 @@ public class GestorOpciones
     public string? NombreUsuario { get; set; }
     public string? NombreTrabajador { get; set; }
     public decimal DineroUsuario { get; set; }
-    
+
     protected List<CuentaUsuarios> ListaUsuarios = new List<CuentaUsuarios>() { };
     protected List<CuentaTrabajadores> ListaTrabajadores = new List<CuentaTrabajadores>() { };
+
+    public MenuOpciones()
+    {
+
+    }
 
     public void MenuGeneral(int opcion)
     {

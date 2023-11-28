@@ -1,4 +1,4 @@
-﻿namespace Data.Cuentas;
+﻿namespace Data;
 
 using System.Text.Json;
 using System.IO;

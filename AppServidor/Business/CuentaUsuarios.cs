@@ -1,5 +1,6 @@
-﻿namespace Business.Usuarios;
-using Data.Cuentas;
+﻿namespace Business;
+
+using Data;
 
 public class CuentaUsuarios
 {

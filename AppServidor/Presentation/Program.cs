@@ -1,6 +1,4 @@
-﻿namespace Presentation.Program;
-
-using Business;
+﻿namespace Presentation;
 
 class Program
 {

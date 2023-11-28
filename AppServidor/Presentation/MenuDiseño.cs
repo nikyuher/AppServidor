@@ -1,8 +1,6 @@
-namespace Presentation.Menu;
+namespace Presentation;
 
-using Presentation.Gestor;
-
-class MenuUsuario : GestorOpciones
+class MenuDiseño : MenuOpciones
 {
 
     public string MenuGeneral()

@@ -1,6 +1,6 @@
-namespace Business.Trabajadores;
-using Data.Productos;
-using Data.Cuentas;
+namespace Business;
+
+using Data;
 
 public class CuentaTrabajadores
 {
