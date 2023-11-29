@@ -7,11 +7,11 @@ using System.Collections.Generic;
 public class DatosUsuarios
 {
     private string archivo = "../Data/dataUsuarios.json";
-    private JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
 
-    public void SaveJson<T>(List<T> listaUsuariosDTO)
+    public void SaveJson<T>(List<T> lista)
     {
-        string jsonString = JsonSerializer.Serialize(listaUsuariosDTO,options);
+        JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+        string jsonString = JsonSerializer.Serialize(lista, options);
         File.WriteAllText(archivo, jsonString);
     }
 
