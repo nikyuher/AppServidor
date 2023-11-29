@@ -15,7 +15,7 @@ public class DatosCuentas
 
     public DatosCuentas()
     {
-
+        ListaUsuarios = new List<object>();
     }
 
     public void CargarJSON()
@@ -25,7 +25,7 @@ public class DatosCuentas
             if (File.Exists(archivo))
             {
                 string? contenido = File.ReadAllText(archivo);
-                ListaUsuarios = JsonSerializer.Deserialize<List<Object>>(contenido, options);
+                ListaUsuarios = JsonSerializer.Deserialize<List<Object>>(contenido, options)  ?? new List<Object>();;
             }
         }
         catch (Exception e)
