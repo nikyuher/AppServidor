@@ -1,57 +1,90 @@
 namespace Presentation;
 
-class MenuDiseño : MenuOpciones
+public class MenuDiseño : MenuOpciones
 {
 
-    public string MenuGeneral()
+    public int MenuGeneral()
     {
-        Console.WriteLine("1) Crear cuenta");
-        Console.WriteLine("2) Iniciar Seion");
-        Console.WriteLine("3) Lista de Productos");
-        Console.WriteLine("0) Cerrar Programa");
+        Console.WriteLine("1. Iniciar Sesion");
+        Console.WriteLine("2. Crea tu Cuenta");
+        Console.WriteLine("3. Lista de Productos");
+        Console.WriteLine("0. Cerrar Programa");
 
-        string? option = Console.ReadLine();
+        string? opcion = Console.ReadLine();
 
-        return option ?? "";
+        int Devolver = 0;
+
+        while (!int.TryParse(opcion, out Devolver))
+        {
+            Console.WriteLine("Ese no es un numero");
+            opcion = Console.ReadLine();
+        }
+
+        return Devolver;
     }
 
-    public string MenuTrabajador()
+    public int MenuTrabajador()
     {
 
         Console.WriteLine($"Cuenta Trabajador : {NombreTrabajador}");
-        Console.WriteLine("1) Anadir Producto");
-        Console.WriteLine("2) Modificar Producto");
-        Console.WriteLine("3) Eliminar Producto");
+        Console.WriteLine("1. Anadir Producto");
+        Console.WriteLine("2. Modificar Producto");
+        Console.WriteLine("3. Eliminar Producto");
 
         string? opcion = Console.ReadLine();
 
-        return opcion ?? "";
+        int Devolver = 0;
+
+        while (!int.TryParse(opcion, out Devolver))
+        {
+            Console.WriteLine("Ese no es un numero");
+            opcion = Console.ReadLine();
+        }
+
+        return Devolver;
     }
 
-    public string MenuBasicoUsuario()
+    public int MenuBasicoUsuario()
     {
         Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
-        Console.WriteLine("1) Opciones de Cuenta");
-        Console.WriteLine("2) Carrito");
-        Console.WriteLine("3) Lista de Productos");
-        Console.WriteLine("0) Cerrar Programa");
+        Console.WriteLine("1. Opciones de Cuenta");
+        Console.WriteLine("2. Carrito");
+        Console.WriteLine("3. Lista de Productos");
+        Console.WriteLine("0. Cerrar Programa");
 
         string? opcion = Console.ReadLine();
 
-        return opcion ?? "";
+        int Devolver = 0;
+
+        while (!int.TryParse(opcion, out Devolver))
+        {
+            Console.WriteLine("Ese no es un numero");
+            opcion = Console.ReadLine();
+        }
+
+        return Devolver;
     }
 
-    public string MenuAvanzadasUsuario()
+    public int MenuAvanzadasUsuario()
     {
         Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
-        Console.WriteLine("1) Cambiar Nombre");
-        Console.WriteLine("2) Cambiar Contraseña");
-        Console.WriteLine("3) AgragarDinero");
-        Console.WriteLine("4) Historial Cuenta");
-        Console.WriteLine("5) Cerrar Sesion");
-        Console.WriteLine("6) Eliminar Cuenta");
+        Console.WriteLine("1. Cambiar Nombre");
+        Console.WriteLine("2. Cambiar Contraseña");
+        Console.WriteLine("3. Agregar Dinero");
+        Console.WriteLine("4. Historial Cuenta");
+        Console.WriteLine("5. Cerrar Sesion");
+        Console.WriteLine("6. Eliminar Cuenta");
 
         string? opcion = Console.ReadLine();
-        return opcion ?? "";
+
+        int Devolver = 0;
+
+        while (!int.TryParse(opcion, out Devolver))
+        {
+            Console.WriteLine("Ese no es un numero");
+            opcion = Console.ReadLine();
+        }
+
+        return Devolver;
     }
 }

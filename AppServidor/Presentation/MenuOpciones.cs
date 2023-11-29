@@ -5,118 +5,126 @@ using Business;
 public class MenuOpciones
 {
 
-    private CuentaUsuarios? Usuarios { get; set; }
-    private CuentaUsuarios? Trabajadores { get; set; }
+    private CuentaUsuariosManager cuentaManager = new CuentaUsuariosManager();
 
-    public string? NombreUsuario { get; set; }
-    public string? NombreTrabajador { get; set; }
-    public decimal DineroUsuario { get; set; }
+    public string? NombreUsuario;
+    public string? NombreTrabajador;
+    public decimal DineroUsuario;
 
-    public MenuOpciones()
+
+    public void MostrarMenu()
     {
-
-    }
-
-    public void MenuGeneral(int opcion)
-    {
-        switch (opcion)
+        while (true)
         {
+            Console.WriteLine("1. Crear cuenta");
+            Console.WriteLine("2. Iniciar sesión");
+            Console.WriteLine("3. Cerrar Sesion");
+            Console.WriteLine("4. Añadir Dinero");
+            Console.WriteLine("5. Salir");
 
-            case 0:
+            string? opcion = Console.ReadLine();
+            int devolver = 0;
 
-                break;
+            while (!int.TryParse(opcion, out devolver))
+            {
+                Console.WriteLine("Ese no es un numero");
+                opcion = Console.ReadLine();
+            }
 
-            case 1:
-                Console.Write("Ingresa tu Cuenta: ");
-                string? cuenta = Console.ReadLine();
+            switch (devolver)
+            {
+                case 1:
+                    CrearCuenta();
+                    break;
 
-                NombreUsuario = cuenta;
+                case 2:
+                    IniciarSesion();
+                    break;
 
-                break;
+                case 3:
+                    CerrarSesion();
+                    break;
 
-            case 2:
+                case 4:
+                    AnadirDinero();
+                    break;
 
-                Console.WriteLine("Escribe el nombre de tu Cuenta");
-                string? nombre = Console.ReadLine();
+                case 5:
+                    Environment.Exit(0);
+                    break;
 
-                NombreUsuario = nombre;
-
-                break;
-
-            case 3:
-                break;
+                default:
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    break;
+            }
         }
     }
 
-    public void MenuTrabajador(int opcion)
+    private void CrearCuenta()
     {
-        switch (opcion)
+        Console.Write("Ingrese nombre de usuario: ");
+        string? nombre = Console.ReadLine();
+
+        Console.Write("Ingrese contraseña: ");
+        string? contraseña = Console.ReadLine();
+
+        cuentaManager.CrearCuenta(nombre, contraseña);
+
+        Console.WriteLine("Cuenta creada exitosamente.");
+    }
+
+    private void IniciarSesion()
+    {
+        Console.Write("Ingrese nombre de usuario: ");
+        string? nombre = Console.ReadLine();
+
+        Console.Write("Ingrese contraseña: ");
+        string? contraseña = Console.ReadLine();
+
+        if (cuentaManager.IniciarSesion(nombre, contraseña))
         {
 
-            case 0:
-
-                break;
-
-            case 1:
-
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
+            NombreUsuario = nombre;
+            Console.WriteLine("Inicio de sesión exitoso.");
+        }
+        else
+        {
+            Console.WriteLine("Inicio de sesión fallido");
         }
     }
 
-    public void MenuBasicoUsuario(int opcion)
+    private void AnadirDinero()
     {
-        switch (opcion)
+
+        if (NombreUsuario != null)
         {
+            Console.WriteLine("Cuanto dinero quieres agregar");
+            string? dinero = Console.ReadLine();
 
-            case 0:
+            int devolver = 0;
 
-                break;
+            while (!int.TryParse(dinero, out devolver))
+            {
+                Console.WriteLine("Ese no es un numero");
+                dinero = Console.ReadLine();
+            }
 
-            case 1:
-
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
+            cuentaManager.AgregarDinero(NombreUsuario, devolver);
+        }
+        else
+        {
+            Console.WriteLine("No has iniciado sesion.\n");
         }
     }
 
-    public void MenuAvanzadasUsuario(int opcion)
+    public void CerrarSesion()
     {
-        switch (opcion)
-        {
+        NombreUsuario = null;
+        Console.WriteLine("Sesion Cerrada Correctamente \n");
+    }
 
-            case 0:
+    private void ListaProductos()
+    {
 
-                break;
-
-            case 1:
-
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                break;
-
-            case 4:
-                break;
-
-            case 5:
-                break;
-
-            case 6:
-                break;
-        }
     }
 }

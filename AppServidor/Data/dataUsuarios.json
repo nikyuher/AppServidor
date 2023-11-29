@@ -1,0 +1,38 @@
+[
+  {
+    "IdCuenta": 1,
+    "Nombre": "MAMA",
+    "Contrasena": "PAPA",
+    "Dinero": 505
+  },
+  {
+    "IdCuenta": 2,
+    "Nombre": "nicolas",
+    "Contrasena": "aasda",
+    "Dinero": 300
+  },
+  {
+    "IdCuenta": 3,
+    "Nombre": "jose",
+    "Contrasena": "asdasdad",
+    "Dinero": 0
+  },
+  {
+    "IdCuenta": 4,
+    "Nombre": "juuju",
+    "Contrasena": "sdada",
+    "Dinero": 0
+  },
+  {
+    "IdCuenta": 5,
+    "Nombre": "MARIO",
+    "Contrasena": "SAFS",
+    "Dinero": 1000
+  },
+  {
+    "IdCuenta": 6,
+    "Nombre": "pochoclo",
+    "Contrasena": "123",
+    "Dinero": 100
+  }
+]

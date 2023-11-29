@@ -22,3 +22,15 @@ D:\App\AppServidor\Data\obj\Debug\net6.0\App.Data.dll
 D:\App\AppServidor\Data\obj\Debug\net6.0\refint\App.Data.dll
 D:\App\AppServidor\Data\obj\Debug\net6.0\App.Data.pdb
 D:\App\AppServidor\Data\obj\Debug\net6.0\ref\App.Data.dll
+D:\AppServior\AppServidor\Data\bin\Debug\net6.0\App.Data.deps.json
+D:\AppServior\AppServidor\Data\bin\Debug\net6.0\App.Data.dll
+D:\AppServior\AppServidor\Data\bin\Debug\net6.0\App.Data.pdb
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.csproj.AssemblyReference.cache
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.AssemblyInfoInputs.cache
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.AssemblyInfo.cs
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.csproj.CoreCompileInputs.cache
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.dll
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\refint\App.Data.dll
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\App.Data.pdb
+D:\AppServior\AppServidor\Data\obj\Debug\net6.0\ref\App.Data.dll

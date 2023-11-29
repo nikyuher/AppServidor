@@ -6,8 +6,8 @@ class Program
     static void Main()
     {
 
-    
+        MenuOpciones menu = new MenuOpciones();
+        menu.MostrarMenu();
 
     }
-
 }
