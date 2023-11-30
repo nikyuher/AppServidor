@@ -20,7 +20,8 @@ public class MenuOpciones
             Console.WriteLine("2. Iniciar sesión");
             Console.WriteLine("3. Cerrar Sesion");
             Console.WriteLine("4. Añadir Dinero");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("5. Restar Dinero");
+            Console.WriteLine("6. Salir");
 
             string? opcion = Console.ReadLine();
             int devolver = 0;
@@ -50,6 +51,10 @@ public class MenuOpciones
                     break;
 
                 case 5:
+                    RestarDinero();
+                    break;
+
+                case 6:
                     Environment.Exit(0);
                     break;
 
@@ -70,7 +75,7 @@ public class MenuOpciones
 
         cuentaManager.CrearCuenta(nombre, contraseña);
 
-        Console.WriteLine("Cuenta creada exitosamente.");
+        Console.WriteLine("Cuenta creada exitosamente.\n");
     }
 
     private void IniciarSesion()
@@ -85,12 +90,18 @@ public class MenuOpciones
         {
 
             NombreUsuario = nombre;
-            Console.WriteLine("Inicio de sesión exitoso.");
+            Console.WriteLine("Inicio de sesión exitoso.\n");
         }
         else
         {
-            Console.WriteLine("Inicio de sesión fallido");
+            Console.WriteLine("Inicio de sesión fallido.\n");
         }
+    }
+
+    public void CerrarSesion()
+    {
+        NombreUsuario = null;
+        Console.WriteLine("Sesion Cerrada Correctamente \n");
     }
 
     private void AnadirDinero()
@@ -105,11 +116,18 @@ public class MenuOpciones
 
             while (!int.TryParse(dinero, out devolver))
             {
-                Console.WriteLine("Ese no es un numero");
+                Console.WriteLine("Ese no es un numero.\n");
                 dinero = Console.ReadLine();
             }
 
-            cuentaManager.AgregarDinero(NombreUsuario, devolver);
+            try
+            {
+                cuentaManager.AgregarDinero(NombreUsuario, devolver);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
         else
         {
@@ -117,10 +135,35 @@ public class MenuOpciones
         }
     }
 
-    public void CerrarSesion()
+    private void RestarDinero()
     {
-        NombreUsuario = null;
-        Console.WriteLine("Sesion Cerrada Correctamente \n");
+
+        if (NombreUsuario != null)
+        {
+            Console.WriteLine("Cuanto dinero quieres Restar");
+            string? dinero = Console.ReadLine();
+
+            int devolver = 0;
+
+            while (!int.TryParse(dinero, out devolver))
+            {
+                Console.WriteLine("Ese no es un numero.\n");
+                dinero = Console.ReadLine();
+            }
+
+            try
+            {
+                cuentaManager.RestarDinero(NombreUsuario, devolver);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("No se puede Restar Negativos\n");
+            }
+        }
+        else
+        {
+            Console.WriteLine("No has iniciado sesion.\n");
+        }
     }
 
     private void ListaProductos()

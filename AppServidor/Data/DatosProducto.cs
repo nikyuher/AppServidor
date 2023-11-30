@@ -5,43 +5,23 @@ using System.IO;
 using System.Collections.Generic;
 
 public class DatosProducto
-
 {
+    private string archivo = "../Data/dataProducto.json";
 
-    public string archivo = "RegistroProdutos.json";
-
-    public DatosProducto()
+    public void SaveJson<T>(List<T> lista)
     {
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+        string jsonString = JsonSerializer.Serialize(lista, options);
+        File.WriteAllText(archivo, jsonString);
     }
 
-    public void CargarJSON()
+    public List<T> LoadJson<T>()
     {
-        try
+        if (File.Exists(archivo))
         {
-            if (File.Exists(archivo))
-            {
-
-            }
+            string contenido = File.ReadAllText(archivo);
+            return JsonSerializer.Deserialize<List<T>>(contenido) ?? new List<T>();
         }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al cargar Datos Productos del JSON: {e.Message}");
-        }
-    }
-
-    public void GuardarJson()
-    {
-        try
-        {
-            if (File.Exists(archivo))
-            {
-
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Error al Guardar Datos Productos al JSON: {e.Message}");
-        }
+        return new List<T>();
     }
 }

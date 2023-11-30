@@ -48,8 +48,7 @@ public class MenuDiseño : MenuOpciones
     {
         Console.WriteLine($"Cuenta de :{NombreUsuario} Dinero:{DineroUsuario}");
         Console.WriteLine("1. Opciones de Cuenta");
-        Console.WriteLine("2. Carrito");
-        Console.WriteLine("3. Lista de Productos");
+        Console.WriteLine("2. Lista de Productos");
         Console.WriteLine("0. Cerrar Programa");
 
         string? opcion = Console.ReadLine();

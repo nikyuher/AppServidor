@@ -3,7 +3,7 @@
     "IdCuenta": 1,
     "Nombre": "MAMA",
     "Contrasena": "PAPA",
-    "Dinero": 505
+    "Dinero": 510
   },
   {
     "IdCuenta": 2,
@@ -34,5 +34,11 @@
     "Nombre": "pochoclo",
     "Contrasena": "123",
     "Dinero": 100
+  },
+  {
+    "IdCuenta": 7,
+    "Nombre": "nico",
+    "Contrasena": "123",
+    "Dinero": 0
   }
 ]

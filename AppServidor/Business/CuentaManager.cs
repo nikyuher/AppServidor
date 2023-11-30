@@ -39,6 +39,11 @@ public class CuentaUsuariosManager
     {
         CuentaUsuarios? añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
 
+        if (dinero <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(dinero), "No puedes agregar numero Negativos");
+        }
+
         if (añadirDinero != null)
         {
             añadirDinero.Dinero += dinero;
@@ -46,11 +51,34 @@ public class CuentaUsuariosManager
         }
     }
 
+    public void RestarDinero(string? nombre, decimal producto)
+    {
+        CuentaUsuarios? RestarDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+
+        if (producto <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(producto), "No se puede restar un negativo");
+        }
+
+        if (RestarDinero != null)
+        {
+            if (RestarDinero.Dinero - producto < 0)
+            {
+                throw new InvalidOperationException(nameof(RestarDinero.Dinero));
+            }
+            else
+            {
+                RestarDinero.Dinero -= producto;
+                datosUsuarios.SaveJson(ListaUsuarios);
+            }
+        }
+    }
+
     public void HistorialCuenta(string? nombre)
     {
         var history = new StringBuilder();
 
-        
+
     }
 
 }
