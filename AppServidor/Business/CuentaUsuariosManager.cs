@@ -2,7 +2,6 @@ namespace Business;
 
 using Data;
 using System.Text;
-using System.Runtime;
 using System.Collections.Generic;
 
 public class CuentaUsuariosManager
@@ -19,7 +18,7 @@ public class CuentaUsuariosManager
 
     public void CrearCuenta(string? nombre, string? contraseña)
     {
-        CuentaUsuarios nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };
+        var nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };
 
         ListaUsuarios.Add(nuevaCuenta);
         datosUsuarios.SaveJson(ListaUsuarios);
@@ -27,7 +26,7 @@ public class CuentaUsuariosManager
 
     public bool IniciarSesion(string? nombre, string? contraseña)
     {
-        CuentaUsuarios? encontrarUsuario = ListaUsuarios.Find(u => u.Nombre == nombre && u.Contrasena == contraseña);
+        var encontrarUsuario = ListaUsuarios.Find(u => u.Nombre == nombre && u.Contrasena == contraseña);
 
         if (encontrarUsuario != null)
         {
@@ -38,7 +37,7 @@ public class CuentaUsuariosManager
 
     public void AgregarDinero(string? nombre, decimal dinero)
     {
-        CuentaUsuarios? añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
 
         if (dinero <= 0)
         {
@@ -54,30 +53,47 @@ public class CuentaUsuariosManager
 
     public void RestarDinero(string? nombre, string? producto)
     {
-        CuentaProductosManager cuentaProductos = new CuentaProductosManager();
+        var mgProducto = new CuentaProductosManager();
 
-        CuentaUsuarios? CuentaRestarDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
-        CuentaProductos? CuentaRestarProducto = cuentaProductos.ListaProductos.Find(u => u.NombreProducto == producto);
+        var Usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
 
+        var Producto = mgProducto.ListaProductos.Find(u => u.NombreProducto == producto);
 
-        if (CuentaRestarDinero != null)
+        if (Usuario != null)
         {
-            if (CuentaRestarDinero.Dinero - CuentaRestarProducto.PrecioProducto < 0)
+            if (Usuario.Dinero - Producto.PrecioProducto < 0)
             {
                 throw new InvalidOperationException("Dinero Insuficiente en tu Cuenta");
             }
             else
             {
-                CuentaRestarDinero.Dinero -= CuentaRestarProducto.PrecioProducto;
+                var copia = new ProductoCopia(Producto.NombreProducto, Producto.PrecioProducto, DateTime.Now);
+
+                Usuario.Dinero -= Producto.PrecioProducto;
+                Usuario.HistorialCompra.Add(copia);
+
                 datosUsuarios.SaveJson(ListaUsuarios);
             }
         }
     }
 
-    public void HistorialCuenta(string? nombre)
+    public string HistorialCuenta(string? nombre)
     {
+
+        var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
+
         var history = new StringBuilder();
 
+
+        history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto");
+
+        foreach (var item in usuario.HistorialCompra)
+        {
+            usuario.Dinero += item.PrecioCopia;
+            history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+        }
+
+        return history.ToString();
 
     }
 

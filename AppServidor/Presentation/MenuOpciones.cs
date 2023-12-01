@@ -1,6 +1,5 @@
 namespace Presentation;
 
-using System.Reflection;
 using Business;
 
 public class MenuOpciones
@@ -23,9 +22,11 @@ public class MenuOpciones
             Console.WriteLine("2. Iniciar sesión");
             Console.WriteLine("3. Cerrar Sesion");
             Console.WriteLine("4. Añadir Dinero");
-            Console.WriteLine("5. Restar Dinero");
+            Console.WriteLine("5. Comprar Producto");
             Console.WriteLine("6. Crear Producto");
-            Console.WriteLine("7. Salir");
+            Console.WriteLine("7. Historial Usuario");
+            Console.WriteLine("8. Almacen Productos");
+            Console.WriteLine("9. Salir");
 
             string? opcion = Console.ReadLine();
             int devolver = 0;
@@ -55,14 +56,20 @@ public class MenuOpciones
                     break;
 
                 case 5:
-                    RestarDinero();
+                    ComprarProducto();
                     break;
 
                 case 6:
                     CrearProducto();
                     break;
-
                 case 7:
+                    HistorialUsuario();
+                    break;
+
+                case 8:
+                    ListaProductos();
+                    break;
+                case 9:
                     Environment.Exit(0);
                     break;
 
@@ -88,7 +95,7 @@ public class MenuOpciones
 
     private void CrearProducto()
     {
-        if (NombreUsuario == "ADMIN")
+        if (NombreUsuario == "admin")
         {
             Console.WriteLine("Escribe el nombre del producto.");
 
@@ -166,6 +173,7 @@ public class MenuOpciones
             try
             {
                 cuentaManager.AgregarDinero(NombreUsuario, dinero);
+                Console.WriteLine("Dinero añadido exitosamente.\n");
             }
             catch (Exception)
             {
@@ -178,7 +186,7 @@ public class MenuOpciones
         }
     }
 
-    private void RestarDinero()
+    private void ComprarProducto()
     {
 
         if (NombreUsuario != null)
@@ -193,6 +201,8 @@ public class MenuOpciones
                 NombreProducto = producto;
 
                 cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
+
+                Console.WriteLine("Producto Comprado Correctamente.\n");
             }
             catch (Exception)
             {
@@ -203,5 +213,16 @@ public class MenuOpciones
         {
             Console.WriteLine("No has iniciado sesion.\n");
         }
+    }
+
+    private void HistorialUsuario()
+    {
+        Console.WriteLine(cuentaManager.HistorialCuenta(NombreUsuario));
+    }
+
+    private void ListaProductos()
+    {
+
+        Console.WriteLine(cuentaProducto.AlmacenProductos());
     }
 }

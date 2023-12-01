@@ -1,27 +1,44 @@
 [
   {
     "IdProducto": 1,
-    "NombreProducto": "PAPA",
-    "PrecioProducto": 10
+    "NombreProducto": "papa",
+    "PrecioProducto": 10,
+    "Fecha": "2023-12-01T20:16:32.6155631+01:00"
   },
   {
     "IdProducto": 2,
-    "NombreProducto": "CAMOTE",
-    "PrecioProducto": 20
-  },
-  {
-    "IdProducto": 3,
-    "NombreProducto": "PEPERONI",
-    "PrecioProducto": 50
-  },
-  {
-    "IdProducto": 4,
-    "NombreProducto": "SANDIA",
-    "PrecioProducto": 50
+    "NombreProducto": "torta",
+    "PrecioProducto": 40,
+    "Fecha": "2023-12-01T21:21:31.0078113+01:00"
   },
   {
     "IdProducto": 5,
-    "NombreProducto": "PERA",
-    "PrecioProducto": 68
+    "NombreProducto": "mani",
+    "PrecioProducto": 69,
+    "Fecha": "2023-12-01T21:21:43.6330489+01:00"
+  },
+  {
+    "IdProducto": 6,
+    "NombreProducto": "jamon",
+    "PrecioProducto": 34,
+    "Fecha": "2023-12-01T21:21:53.2581324+01:00"
+  },
+  {
+    "IdProducto": 11,
+    "NombreProducto": "tomate",
+    "PrecioProducto": 34,
+    "Fecha": "2023-12-01T21:22:10.8281955+01:00"
+  },
+  {
+    "IdProducto": 22,
+    "NombreProducto": "pescado",
+    "PrecioProducto": 34,
+    "Fecha": "2023-12-01T21:22:37.4553736+01:00"
+  },
+  {
+    "IdProducto": 41,
+    "NombreProducto": "rez",
+    "PrecioProducto": 56,
+    "Fecha": "2023-12-01T21:23:02.0262035+01:00"
   }
 ]
