@@ -26,7 +26,7 @@ public class MenuDiseño : MenuOpciones
     public int MenuTrabajador()
     {
 
-        Console.WriteLine($"Cuenta Trabajador : {NombreTrabajador}");
+        Console.WriteLine($"Cuenta Trabajador : {NombreUsuario}");
         Console.WriteLine("1. Anadir Producto");
         Console.WriteLine("2. Modificar Producto");
         Console.WriteLine("3. Eliminar Producto");

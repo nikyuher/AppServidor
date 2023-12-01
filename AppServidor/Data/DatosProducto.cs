@@ -11,6 +11,7 @@ public class DatosProducto
     public void SaveJson<T>(List<T> lista)
     {
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+
         string jsonString = JsonSerializer.Serialize(lista, options);
         File.WriteAllText(archivo, jsonString);
     }
@@ -22,6 +23,7 @@ public class DatosProducto
             string contenido = File.ReadAllText(archivo);
             return JsonSerializer.Deserialize<List<T>>(contenido) ?? new List<T>();
         }
+        
         return new List<T>();
     }
 }

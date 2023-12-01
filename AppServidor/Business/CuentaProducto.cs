@@ -1,9 +1,10 @@
 namespace Business;
 
 using Data;
+
 public class CuentaProductos
 {
-    public int idProducto { get; set; }
+    public int IdProducto { get;}
     public string? NombreProducto { get; set; }
     public decimal PrecioProducto { get; set; }
 
@@ -12,7 +13,7 @@ public class CuentaProductos
     public CuentaProductos()
     {
 
-        idProducto = SumadorIds;
+        IdProducto = SumadorIds;
         SumadorIds++;
 
     }

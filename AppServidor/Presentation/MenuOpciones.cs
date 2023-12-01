@@ -1,27 +1,31 @@
 namespace Presentation;
 
+using System.Reflection;
 using Business;
 
 public class MenuOpciones
 {
 
     private CuentaUsuariosManager cuentaManager = new CuentaUsuariosManager();
+    private CuentaProductosManager cuentaProducto = new CuentaProductosManager();
 
     public string? NombreUsuario;
-    public string? NombreTrabajador;
     public decimal DineroUsuario;
 
+    public string? NombreProducto;
 
     public void MostrarMenu()
     {
         while (true)
         {
+            Console.WriteLine($"Cuenta {NombreUsuario} Dinero: €{DineroUsuario}");
             Console.WriteLine("1. Crear cuenta");
             Console.WriteLine("2. Iniciar sesión");
             Console.WriteLine("3. Cerrar Sesion");
             Console.WriteLine("4. Añadir Dinero");
             Console.WriteLine("5. Restar Dinero");
-            Console.WriteLine("6. Salir");
+            Console.WriteLine("6. Crear Producto");
+            Console.WriteLine("7. Salir");
 
             string? opcion = Console.ReadLine();
             int devolver = 0;
@@ -55,6 +59,10 @@ public class MenuOpciones
                     break;
 
                 case 6:
+                    CrearProducto();
+                    break;
+
+                case 7:
                     Environment.Exit(0);
                     break;
 
@@ -78,6 +86,40 @@ public class MenuOpciones
         Console.WriteLine("Cuenta creada exitosamente.\n");
     }
 
+    private void CrearProducto()
+    {
+        if (NombreUsuario == "ADMIN")
+        {
+            Console.WriteLine("Escribe el nombre del producto.");
+
+            string? nombre = Console.ReadLine();
+
+            Console.WriteLine("Ponle un precio al producto.");
+            string? precioConvert = Console.ReadLine();
+            int precio = 0;
+
+            while (!int.TryParse(precioConvert, out precio))
+            {
+                Console.WriteLine("Ese no es un numero.\n");
+                precioConvert = Console.ReadLine();
+            }
+
+            if (precio > 0)
+            {
+                cuentaProducto.CrearProducto(nombre, precio);
+
+            }
+            else
+            {
+                Console.WriteLine("No puede ponerle Precios Negativos\n");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Esta no es una cuenta ADMIN\n");
+        }
+    }
+
     private void IniciarSesion()
     {
         Console.Write("Ingrese nombre de usuario: ");
@@ -90,6 +132,7 @@ public class MenuOpciones
         {
 
             NombreUsuario = nombre;
+
             Console.WriteLine("Inicio de sesión exitoso.\n");
         }
         else
@@ -109,24 +152,24 @@ public class MenuOpciones
 
         if (NombreUsuario != null)
         {
-            Console.WriteLine("Cuanto dinero quieres agregar");
-            string? dinero = Console.ReadLine();
+            Console.WriteLine("Cuanto dinero quieres agregar\n");
+            string? convert = Console.ReadLine();
 
-            int devolver = 0;
+            int dinero = 0;
 
-            while (!int.TryParse(dinero, out devolver))
+            while (!int.TryParse(convert, out dinero))
             {
                 Console.WriteLine("Ese no es un numero.\n");
-                dinero = Console.ReadLine();
+                convert = Console.ReadLine();
             }
 
             try
             {
-                cuentaManager.AgregarDinero(NombreUsuario, devolver);
+                cuentaManager.AgregarDinero(NombreUsuario, dinero);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e);
+                Console.WriteLine("No se puede añadir negativos\n");
             }
         }
         else
@@ -140,34 +183,25 @@ public class MenuOpciones
 
         if (NombreUsuario != null)
         {
-            Console.WriteLine("Cuanto dinero quieres Restar");
-            string? dinero = Console.ReadLine();
-
-            int devolver = 0;
-
-            while (!int.TryParse(dinero, out devolver))
-            {
-                Console.WriteLine("Ese no es un numero.\n");
-                dinero = Console.ReadLine();
-            }
 
             try
             {
-                cuentaManager.RestarDinero(NombreUsuario, devolver);
+                Console.WriteLine("Escribe el nombre del producto");
+
+                string? producto = Console.ReadLine();
+
+                NombreProducto = producto;
+
+                cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
             }
             catch (Exception)
             {
-                Console.WriteLine("No se puede Restar Negativos\n");
+                Console.WriteLine("No se encontro el Producto\n");
             }
         }
         else
         {
             Console.WriteLine("No has iniciado sesion.\n");
         }
-    }
-
-    private void ListaProductos()
-    {
-
     }
 }

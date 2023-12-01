@@ -1,0 +1,27 @@
+[
+  {
+    "IdProducto": 1,
+    "NombreProducto": "PAPA",
+    "PrecioProducto": 10
+  },
+  {
+    "IdProducto": 2,
+    "NombreProducto": "CAMOTE",
+    "PrecioProducto": 20
+  },
+  {
+    "IdProducto": 3,
+    "NombreProducto": "PEPERONI",
+    "PrecioProducto": 50
+  },
+  {
+    "IdProducto": 4,
+    "NombreProducto": "SANDIA",
+    "PrecioProducto": 50
+  },
+  {
+    "IdProducto": 5,
+    "NombreProducto": "PERA",
+    "PrecioProducto": 68
+  }
+]

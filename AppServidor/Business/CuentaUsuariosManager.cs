@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class CuentaUsuariosManager
 {
     private DatosUsuarios datosUsuarios = new DatosUsuarios();
+
     private List<CuentaUsuarios> ListaUsuarios = new List<CuentaUsuarios>();
 
     public CuentaUsuariosManager()
@@ -51,24 +52,23 @@ public class CuentaUsuariosManager
         }
     }
 
-    public void RestarDinero(string? nombre, decimal producto)
+    public void RestarDinero(string? nombre, string? producto)
     {
-        CuentaUsuarios? RestarDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        CuentaProductosManager cuentaProductos = new CuentaProductosManager();
 
-        if (producto <= 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(producto), "No se puede restar un negativo");
-        }
+        CuentaUsuarios? CuentaRestarDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        CuentaProductos? CuentaRestarProducto = cuentaProductos.ListaProductos.Find(u => u.NombreProducto == producto);
 
-        if (RestarDinero != null)
+
+        if (CuentaRestarDinero != null)
         {
-            if (RestarDinero.Dinero - producto < 0)
+            if (CuentaRestarDinero.Dinero - CuentaRestarProducto.PrecioProducto < 0)
             {
-                throw new InvalidOperationException(nameof(RestarDinero.Dinero));
+                throw new InvalidOperationException("Dinero Insuficiente en tu Cuenta");
             }
             else
             {
-                RestarDinero.Dinero -= producto;
+                CuentaRestarDinero.Dinero -= CuentaRestarProducto.PrecioProducto;
                 datosUsuarios.SaveJson(ListaUsuarios);
             }
         }
