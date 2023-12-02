@@ -1,15 +1,9 @@
 [
   {
     "IdProducto": 1,
-    "NombreProducto": "papa",
-    "PrecioProducto": 10,
-    "Fecha": "2023-12-02T03:58:31.5928897+01:00"
-  },
-  {
-    "IdProducto": 2,
-    "NombreProducto": "huevo",
+    "NombreProducto": "sandia",
     "PrecioProducto": 20,
-    "Fecha": "2023-12-02T04:01:01.7378616+01:00"
+    "Fecha": "2023-12-02T03:58:31.5928897+01:00"
   },
   {
     "IdProducto": 3,

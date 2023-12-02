@@ -4,7 +4,7 @@ using Data;
 using System.Text;
 using System.Collections.Generic;
 
-public class CuentaProductosManager:CuentaUsuariosManager
+public class CuentaProductosManager : CuentaUsuariosManager
 {
     private DatosProducto datosProducto = new DatosProducto();
 
@@ -23,6 +23,53 @@ public class CuentaProductosManager:CuentaUsuariosManager
 
         ListaProductos.Add(nuevaProducto);
         datosProducto.SaveJson(ListaProductos);
+    }
+
+    public void ModificarNombreProducto(string? producto, string? nuevoProducto)
+    {
+        if (!string.IsNullOrWhiteSpace(nuevoProducto))
+        {
+            var Producto = ListaProductos.Find(u => u.NombreProducto == producto);
+
+            if (Producto != null)
+            {
+                Producto.NombreProducto = nuevoProducto;
+                datosProducto.SaveJson(ListaProductos);
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes el nombre vacio\n");
+        }
+    }
+
+    public void ModificarPrecioProducto(string? producto, decimal nuevoPrecio)
+    {
+        if (nuevoPrecio > 0)
+        {
+            var Producto = ListaProductos.Find(u => u.NombreProducto == producto);
+
+            if (Producto != null)
+            {
+                Producto.PrecioProducto = nuevoPrecio;
+                datosProducto.SaveJson(ListaProductos);
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes poner numeros negativos\n");
+        }
+    }
+
+    public void EliminarProducto(string? producto)
+    {
+        var Producto = ListaProductos.Find(u => u.NombreProducto == producto);
+
+        if (Producto != null)
+        {
+            ListaProductos.Remove(Producto);
+            datosProducto.SaveJson(ListaProductos);
+        }
     }
 
     public string AlmacenProductos()

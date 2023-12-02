@@ -39,9 +39,13 @@ public class CuentaUsuariosManager
     public decimal ObtenerDineroUsuario(string? nombre)
     {
         var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        decimal Dinero = 0;
+        if (añadirDinero != null)
+        {
+            Dinero = añadirDinero.Dinero;
 
-        decimal Dinero = añadirDinero.Dinero;
-
+            return Dinero;
+        }
         return Dinero;
     }
 
@@ -69,7 +73,7 @@ public class CuentaUsuariosManager
 
         var Producto = mgProducto.ListaProductos.Find(u => u.NombreProducto == producto);
 
-        if (Usuario != null)
+        if (Usuario != null && Producto != null)
         {
             if (Usuario.Dinero - Producto.PrecioProducto < 0)
             {
@@ -87,19 +91,51 @@ public class CuentaUsuariosManager
         }
     }
 
-    public void ModificarNombre()
+    public void ModificarNombre(string? cuenta, string? nuevoNombre)
     {
+        if (!string.IsNullOrWhiteSpace(nuevoNombre))
+        {
+            var usuario = ListaUsuarios.Find(u => u.Nombre == cuenta);
 
+            if (usuario != null)
+            {
+                usuario.Nombre = nuevoNombre;
+                datosUsuarios.SaveJson(ListaUsuarios);
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes poner un nombre vacío.\n");
+        }
     }
 
-    public void ModificarContraseña()
+    public void ModificarContraseña(string? cuenta, string? nuevContrasena)
     {
+        if (!string.IsNullOrWhiteSpace(nuevContrasena))
+        {
+            var usuario = ListaUsuarios.Find(u => u.Nombre == cuenta);
 
+            if (usuario != null)
+            {
+                usuario.Contrasena = nuevContrasena;
+                datosUsuarios.SaveJson(ListaUsuarios);
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes poner una contrasena Vacio\n");
+        }
     }
 
-    public void EliminarCuenta()
+    public void EliminarCuenta(string? cuenta)
     {
+        var Usuario = ListaUsuarios.Find(u => u.Nombre == cuenta);
 
+        if (Usuario != null)
+        {
+            ListaUsuarios.Remove(Usuario);
+            datosUsuarios.SaveJson(ListaUsuarios);
+        }
     }
 
     public string HistorialCuenta(string? nombre)

@@ -122,11 +122,11 @@ public class MenuOpciones
             switch (numOption)
             {
                 case 1:
-                    //CambiarNombre();
+                    CambiarNombre();
                     break;
 
                 case 2:
-                    //CambiarContraseña();
+                    CambiarContraseña();
                     break;
 
                 case 3:
@@ -142,7 +142,7 @@ public class MenuOpciones
                     break;
 
                 case 6:
-                    //EliminarCuenta();
+                    EliminarCuenta();
                     break;
 
                 case 0:
@@ -181,11 +181,11 @@ public class MenuOpciones
                     break;
 
                 case 2:
-                    //ModificarProducto();
+                    ModificarProducto();
                     break;
 
                 case 3:
-                    //EliminarProducto();
+                    EliminarProducto();
                     break;
 
                 case 0:
@@ -320,6 +320,114 @@ public class MenuOpciones
         else
         {
             Console.WriteLine("\nNo has iniciado sesion.\n");
+        }
+    }
+    protected void CambiarNombre()
+    {
+        Console.WriteLine("Escrime tu nuevo nombre: ");
+        string? nombreNuevo = Console.ReadLine();
+
+        if (!string.IsNullOrWhiteSpace(nombreNuevo))
+        {
+            cuentaManager.ModificarNombre(NombreUsuario, nombreNuevo);
+
+            NombreUsuario = nombreNuevo;
+
+            Console.WriteLine("\nCambio de nombre exitoso.\n");
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes poner un nombre vacio.\n");
+        }
+    }
+
+    protected void CambiarContraseña()
+    {
+        Console.WriteLine("Escrime tu nueva Contrasena: ");
+        string? nuevaContra = Console.ReadLine();
+
+        if (!string.IsNullOrWhiteSpace(nuevaContra))
+        {
+            cuentaManager.ModificarContraseña(NombreUsuario, nuevaContra);
+
+            DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+
+            Console.WriteLine("\nCambio de nombre exitoso.\n");
+        }
+        else
+        {
+            Console.WriteLine("\nNo puedes poner una contraseña vacia.\n");
+        }
+    }
+
+    protected void EliminarCuenta()
+    {
+        cuentaManager.EliminarCuenta(NombreUsuario);
+        Console.WriteLine("\nCuenta Eliminada exitisa.\n");
+
+        MenuGeneral();
+    }
+
+    protected void ModificarProducto()
+    {
+        try
+        {
+            Console.WriteLine("Que producto modificara: ");
+            string? ProductoViejo = Console.ReadLine();
+
+            Console.WriteLine("Escrime el nuevo nombre: ");
+            string? nuevaProducto = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(nuevaProducto))
+            {
+                cuentaProducto.ModificarNombreProducto(ProductoViejo, nuevaProducto);
+
+
+                Console.WriteLine("Escribe el nuevo precio");
+                string? convert = Console.ReadLine();
+
+                decimal dinero = 0;
+
+                while (!decimal.TryParse(convert, out dinero))
+                {
+                    Console.WriteLine("\nEse no es un numero.\n");
+                    convert = Console.ReadLine();
+                }
+
+                cuentaProducto.ModificarPrecioProducto(nuevaProducto, dinero);
+
+                Console.WriteLine("\nCambio exitoso.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nNo puedes poner el nombre vacia.\n");
+            }
+        }
+        catch (Exception e)
+        {
+
+            Console.WriteLine("No se encontro el Producto" + e);
+        }
+
+    }
+
+    protected void EliminarProducto()
+    {
+        try
+        {
+            Console.WriteLine("Escrime del producto a eliminar ");
+            string? eliminar = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(eliminar))
+            {
+               cuentaProducto.EliminarProducto(eliminar);
+               Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
+            }
+        }
+        catch (Exception e)
+        {
+
+            Console.WriteLine("No se encontro el Producto" + e);
         }
     }
 

@@ -7,41 +7,17 @@
     "HistorialCompra": []
   },
   {
-    "IdCuenta": 2,
+    "IdCuenta": 3,
     "Nombre": "nico",
     "Contrasena": "123",
     "Dinero": 0,
-    "HistorialCompra": [
-      {
-        "NombreCopia": "papa",
-        "PrecioCopia": 10,
-        "FechaCopia": "2023-12-02T04:07:44.9291664+01:00"
-      },
-      {
-        "NombreCopia": "papa",
-        "PrecioCopia": 10,
-        "FechaCopia": "2023-12-02T04:11:52.6384802+01:00"
-      },
-      {
-        "NombreCopia": "oro",
-        "PrecioCopia": 1000,
-        "FechaCopia": "2023-12-02T04:20:43.8046868+01:00"
-      },
-      {
-        "NombreCopia": "carne",
-        "PrecioCopia": 50,
-        "FechaCopia": "2023-12-02T04:20:56.9977627+01:00"
-      },
-      {
-        "NombreCopia": "papa",
-        "PrecioCopia": 10,
-        "FechaCopia": "2023-12-02T04:21:02.3023364+01:00"
-      },
-      {
-        "NombreCopia": "papa",
-        "PrecioCopia": 10,
-        "FechaCopia": "2023-12-02T04:21:11.6073418+01:00"
-      }
-    ]
+    "HistorialCompra": []
+  },
+  {
+    "IdCuenta": 4,
+    "Nombre": "jose",
+    "Contrasena": "123",
+    "Dinero": 0,
+    "HistorialCompra": []
   }
 ]
