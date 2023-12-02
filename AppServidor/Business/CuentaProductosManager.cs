@@ -25,21 +25,25 @@ public class CuentaProductosManager : CuentaUsuariosManager
         datosProducto.SaveJson(ListaProductos);
     }
 
-    public void ModificarNombreProducto(string? producto, string? nuevoProducto)
+    public void ModificarNombreProducto(string? nombreProducto, string? nuevoNombreProducto)
     {
-        if (!string.IsNullOrWhiteSpace(nuevoProducto))
-        {
-            var Producto = ListaProductos.Find(u => u.NombreProducto == producto);
+        var producto = ListaProductos.Find(u => u.NombreProducto == nombreProducto);
 
-            if (Producto != null)
+        if (producto != null)
+        {
+            if (!string.IsNullOrWhiteSpace(nuevoNombreProducto))
             {
-                Producto.NombreProducto = nuevoProducto;
+                producto.NombreProducto = nuevoNombreProducto;
                 datosProducto.SaveJson(ListaProductos);
+            }
+            else
+            {
+                Console.WriteLine("\nNo puedes dejar el nombre vacío.\n");
             }
         }
         else
         {
-            Console.WriteLine("\nNo puedes el nombre vacio\n");
+            throw new InvalidOperationException("Producto no encontrado");
         }
     }
 
@@ -69,6 +73,10 @@ public class CuentaProductosManager : CuentaUsuariosManager
         {
             ListaProductos.Remove(Producto);
             datosProducto.SaveJson(ListaProductos);
+        }
+        else
+        {
+            throw new InvalidOperationException("Producto no encontrado");
         }
     }
 

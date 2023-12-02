@@ -368,48 +368,48 @@ public class MenuOpciones
         MenuGeneral();
     }
 
-    protected void ModificarProducto()
+protected void ModificarProducto()
+{
+    try
     {
-        try
+        Console.WriteLine("¿Qué producto modificará?: ");
+        string? productoViejo = Console.ReadLine();
+
+        if (!string.IsNullOrWhiteSpace(productoViejo))
         {
-            Console.WriteLine("Que producto modificara: ");
-            string? ProductoViejo = Console.ReadLine();
+            Console.WriteLine("Escriba el nuevo nombre: ");
+            string? nuevoProducto = Console.ReadLine();
 
-            Console.WriteLine("Escrime el nuevo nombre: ");
-            string? nuevaProducto = Console.ReadLine();
-
-            if (!string.IsNullOrWhiteSpace(nuevaProducto))
+            if (!string.IsNullOrWhiteSpace(nuevoProducto))
             {
-                cuentaProducto.ModificarNombreProducto(ProductoViejo, nuevaProducto);
+                cuentaProducto.ModificarNombreProducto(productoViejo, nuevoProducto);
+                Console.WriteLine("\nNombre cambiado exitosamente.\n");
 
+                Console.WriteLine("Escriba el nuevo precio: ");
+                string? precioInput = Console.ReadLine();
 
-                Console.WriteLine("Escribe el nuevo precio");
-                string? convert = Console.ReadLine();
-
-                decimal dinero = 0;
-
-                while (!decimal.TryParse(convert, out dinero))
+                if (decimal.TryParse(precioInput, out decimal nuevoPrecio) && nuevoPrecio >= 0)
                 {
-                    Console.WriteLine("\nEse no es un numero.\n");
-                    convert = Console.ReadLine();
+                    cuentaProducto.ModificarPrecioProducto(nuevoProducto, nuevoPrecio);
+                    Console.WriteLine("\nPrecio cambiado exitosamente.\n");
                 }
-
-                cuentaProducto.ModificarPrecioProducto(nuevaProducto, dinero);
-
-                Console.WriteLine("\nCambio exitoso.\n");
+                else
+                {
+                    Console.WriteLine("\nEl precio debe ser un número positivo.\n");
+                }
             }
             else
             {
-                Console.WriteLine("\nNo puedes poner el nombre vacia.\n");
+                Console.WriteLine("\nNo puedes dejar el nombre vacío.\n");
             }
         }
-        catch (Exception e)
-        {
-
-            Console.WriteLine("No se encontro el Producto" + e);
-        }
-
     }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Ocurrió un error: {e.Message}");
+    }
+}
+
 
     protected void EliminarProducto()
     {
@@ -420,14 +420,14 @@ public class MenuOpciones
 
             if (!string.IsNullOrWhiteSpace(eliminar))
             {
-               cuentaProducto.EliminarProducto(eliminar);
-               Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
+                cuentaProducto.EliminarProducto(eliminar);
+                Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
             }
         }
         catch (Exception e)
         {
 
-            Console.WriteLine("No se encontro el Producto" + e);
+            Console.WriteLine($"Ocurrió un error: {e.Message}");
         }
     }
 
