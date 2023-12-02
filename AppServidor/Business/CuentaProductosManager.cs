@@ -4,7 +4,7 @@ using Data;
 using System.Text;
 using System.Collections.Generic;
 
-public class CuentaProductosManager
+public class CuentaProductosManager:CuentaUsuariosManager
 {
     private DatosProducto datosProducto = new DatosProducto();
 
@@ -31,11 +31,11 @@ public class CuentaProductosManager
         var history = new StringBuilder();
 
 
-        history.AppendLine("Nombre\t\tPrecio");
+        history.AppendLine("Producto\t\tPrecio");
 
         foreach (var item in ListaProductos)
         {
-            history.AppendLine($"{item.NombreProducto}\t\t$ {item.PrecioProducto}");
+            history.AppendLine($"{item.NombreProducto}\t\t$ {item.PrecioProducto}\n");
         }
 
         return history.ToString();

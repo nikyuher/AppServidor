@@ -7,7 +7,8 @@ class Program
     {
 
         MenuOpciones menu = new MenuOpciones();
-        menu.MostrarMenu();
+
+        menu.MenuGeneral();
 
     }
 }

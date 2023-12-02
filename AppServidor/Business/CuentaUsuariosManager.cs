@@ -3,6 +3,7 @@ namespace Business;
 using Data;
 using System.Text;
 using System.Collections.Generic;
+using System.Configuration.Assemblies;
 
 public class CuentaUsuariosManager
 {
@@ -33,6 +34,15 @@ public class CuentaUsuariosManager
             return true;
         }
         return false;
+    }
+
+    public decimal ObtenerDineroUsuario(string? nombre)
+    {
+        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+
+        decimal Dinero = añadirDinero.Dinero;
+
+        return Dinero;
     }
 
     public void AgregarDinero(string? nombre, decimal dinero)
@@ -77,6 +87,21 @@ public class CuentaUsuariosManager
         }
     }
 
+    public void ModificarNombre()
+    {
+
+    }
+
+    public void ModificarContraseña()
+    {
+
+    }
+
+    public void EliminarCuenta()
+    {
+
+    }
+
     public string HistorialCuenta(string? nombre)
     {
 
@@ -85,7 +110,7 @@ public class CuentaUsuariosManager
         var history = new StringBuilder();
 
 
-        history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto");
+        history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
 
         foreach (var item in usuario.HistorialCompra)
         {
