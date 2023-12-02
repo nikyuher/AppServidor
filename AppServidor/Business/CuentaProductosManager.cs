@@ -38,12 +38,12 @@ public class CuentaProductosManager : CuentaUsuariosManager
             }
             else
             {
-                Console.WriteLine("\nNo puedes dejar el nombre vacío.\n");
+                throw new Exception("No puedes dejar el nombre vacío.");
             }
         }
         else
         {
-            throw new InvalidOperationException("Producto no encontrado");
+            throw new InvalidOperationException("Producto no encontrado.");
         }
     }
 
@@ -61,7 +61,7 @@ public class CuentaProductosManager : CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner numeros negativos\n");
+            throw new Exception("No puedes poner numeros negativos");
         }
     }
 

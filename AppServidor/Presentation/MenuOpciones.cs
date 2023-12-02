@@ -160,10 +160,11 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine($"Cuenta de Administrador\n");
-            Console.WriteLine("1. Anadir Producto");
-            Console.WriteLine("2. Modificar Producto");
-            Console.WriteLine("3. Eliminar Producto");
+            Console.WriteLine("Cuenta de Administrador\n");
+            Console.WriteLine("1. Lista de Productos");
+            Console.WriteLine("2. Anadir Producto");
+            Console.WriteLine("3. Modificar Producto");
+            Console.WriteLine("4. Eliminar Producto");
             Console.WriteLine("0. Salir Cuenta");
 
             string? opcion = Console.ReadLine();
@@ -178,17 +179,20 @@ public class MenuOpciones
             switch (numOption)
             {
                 case 1:
-                    CrearProducto();
+                    ListaProductos();
                     break;
 
                 case 2:
-                    ModificarProducto();
+                    CrearProducto();
                     break;
 
                 case 3:
-                    EliminarProducto();
+                    ModificarProducto();
                     break;
 
+                case 4:
+                    EliminarProducto();
+                    break;
                 case 0:
                     CerrarSesion();
                     MenuGeneral();
@@ -312,7 +316,7 @@ public class MenuOpciones
 
                 cuentaManager.AgregarDinero(NombreUsuario, dinero);
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
-                
+
                 Console.WriteLine("\nDinero añadido exitosamente.\n");
             }
             catch (Exception e)
@@ -376,36 +380,23 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("¿Qué producto modificará?: ");
+            Console.WriteLine("¿Que producto modificara?: ");
             string? productoViejo = Console.ReadLine();
 
-            if (!string.IsNullOrWhiteSpace(productoViejo))
+
+            Console.WriteLine("Escriba el nuevo nombre: ");
+            string? nuevoProducto = Console.ReadLine();
+
+            cuentaProducto.ModificarNombreProducto(productoViejo, nuevoProducto);
+            Console.WriteLine("\nNombre cambiado exitosamente.\n");
+
+            Console.WriteLine("Escriba el nuevo precio: ");
+            string? precioInput = Console.ReadLine();
+
+            if (decimal.TryParse(precioInput, out decimal nuevoPrecio) && nuevoPrecio >= 0)
             {
-                Console.WriteLine("Escriba el nuevo nombre: ");
-                string? nuevoProducto = Console.ReadLine();
-
-                if (!string.IsNullOrWhiteSpace(nuevoProducto))
-                {
-                    cuentaProducto.ModificarNombreProducto(productoViejo, nuevoProducto);
-                    Console.WriteLine("\nNombre cambiado exitosamente.\n");
-
-                    Console.WriteLine("Escriba el nuevo precio: ");
-                    string? precioInput = Console.ReadLine();
-
-                    if (decimal.TryParse(precioInput, out decimal nuevoPrecio) && nuevoPrecio >= 0)
-                    {
-                        cuentaProducto.ModificarPrecioProducto(nuevoProducto, nuevoPrecio);
-                        Console.WriteLine("\nPrecio cambiado exitosamente.\n");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nEl precio debe ser un número positivo.\n");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nNo puedes dejar el nombre vacío.\n");
-                }
+                cuentaProducto.ModificarPrecioProducto(nuevoProducto, nuevoPrecio);
+                Console.WriteLine("\nPrecio cambiado exitosamente.\n");
             }
         }
         catch (Exception e)
