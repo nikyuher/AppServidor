@@ -156,7 +156,91 @@ public class MenuOpciones
         }
     }
 
+
     public void MenuAdministrador()
+    {
+        while (true)
+        {
+            Console.WriteLine("Cuenta de Administrador\n");
+            Console.WriteLine("1. Administrar Usuarios");
+            Console.WriteLine("2. Administrar Productos");
+            Console.WriteLine("0. Salir Cuenta");
+
+            string? opcion = Console.ReadLine();
+            int numOption = 0;
+
+            while (!int.TryParse(opcion, out numOption))
+            {
+                Console.WriteLine("Ese no es un numero\n");
+                opcion = Console.ReadLine();
+            }
+
+            switch (numOption)
+            {
+                case 1:
+                    MenurAdminUsuario();
+                    break;
+
+                case 2:
+                    MenuAdminProducto();
+                    break;
+
+                case 0:
+                    CerrarSesion();
+                    MenuGeneral();
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    break;
+            }
+        }
+    }
+
+    public void MenurAdminUsuario()
+    {
+        while (true)
+        {
+            Console.WriteLine("Cuenta de Administrador\n");
+            Console.WriteLine("1. Lista de Usuarios");
+            Console.WriteLine("2. Añadir Usuario");
+            Console.WriteLine("3. Eliminar Usuario");
+            Console.WriteLine("0. atras");
+
+            string? opcion = Console.ReadLine();
+            int numOption = 0;
+
+            while (!int.TryParse(opcion, out numOption))
+            {
+                Console.WriteLine("Ese no es un numero\n");
+                opcion = Console.ReadLine();
+            }
+
+            switch (numOption)
+            {
+                case 1:
+                    ListaUsuarios();
+                    break;
+
+                case 2:
+                    CrearCuenta();
+                    break;
+
+                case 3:
+                    EliminarCuenta();
+                    break;
+                case 0:
+                    MenuAdministrador();
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    break;
+            }
+        }
+    }
+
+    public void MenuAdminProducto()
     {
         while (true)
         {
@@ -165,7 +249,7 @@ public class MenuOpciones
             Console.WriteLine("2. Anadir Producto");
             Console.WriteLine("3. Modificar Producto");
             Console.WriteLine("4. Eliminar Producto");
-            Console.WriteLine("0. Salir Cuenta");
+            Console.WriteLine("0. atras");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -194,8 +278,7 @@ public class MenuOpciones
                     EliminarProducto();
                     break;
                 case 0:
-                    CerrarSesion();
-                    MenuGeneral();
+                    MenuAdministrador();
                     break;
 
                 default:
@@ -204,6 +287,7 @@ public class MenuOpciones
             }
         }
     }
+
 
     protected void CrearCuenta()
     {
@@ -383,10 +467,30 @@ public class MenuOpciones
 
     protected void EliminarCuenta()
     {
-        cuentaManager.EliminarCuenta(NombreUsuario);
-        Console.WriteLine("\nCuenta Eliminada exitisa.\n");
 
-        MenuGeneral();
+
+        try
+        {
+            if (NombreUsuario == "admin")
+            {
+                Console.WriteLine("¿Que cuenta quieres Eliminar?\n");
+                string? cuenta = Console.ReadLine();
+
+                cuentaManager.EliminarCuenta(cuenta);
+                Console.WriteLine("\nCuenta Eliminada exitisa.\n");
+            }
+            else
+            {
+                cuentaManager.EliminarCuenta(NombreUsuario);
+                Console.WriteLine("\nCuenta Eliminada exitisa.\n");
+
+                MenuGeneral();
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+        }
     }
 
     protected void ModificarProducto()
@@ -478,5 +582,10 @@ public class MenuOpciones
     {
 
         Console.WriteLine(cuentaProducto.AlmacenProductos());
+    }
+
+    protected void ListaUsuarios()
+    {
+        Console.WriteLine(cuentaManager.AlmacenUsuarios());
     }
 }

@@ -164,6 +164,10 @@ public class CuentaUsuariosManager
             ListaUsuarios.Remove(Usuario);
             datosUsuarios.SaveJson(ListaUsuarios);
         }
+        else
+        {
+            throw new Exception("No se encontro al Usuario");
+        }
     }
 
     public string HistorialCuenta(string? nombre)
@@ -187,6 +191,20 @@ public class CuentaUsuariosManager
 
         return history.ToString();
 
+    }
+
+    public string AlmacenUsuarios()
+    {
+
+        var history = new StringBuilder();
+
+        history.AppendLine("Usuarios\tContraseñas\tDinero");
+
+        foreach (var item in ListaUsuarios)
+        {
+            history.AppendLine($"{item.Nombre}\t\t{item.Contrasena}\t\t{item.Dinero}");
+        }
+        return history.ToString();
     }
 
 }
