@@ -7,14 +7,14 @@
     "HistorialCompra": []
   },
   {
-    "IdCuenta": 3,
-    "Nombre": "nico",
+    "IdCuenta": 2,
+    "Nombre": "nicolas",
     "Contrasena": "123",
     "Dinero": 0,
     "HistorialCompra": []
   },
   {
-    "IdCuenta": 4,
+    "IdCuenta": 3,
     "Nombre": "jose",
     "Contrasena": "123",
     "Dinero": 0,

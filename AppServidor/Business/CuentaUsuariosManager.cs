@@ -89,6 +89,10 @@ public class CuentaUsuariosManager
                 datosUsuarios.SaveJson(ListaUsuarios);
             }
         }
+        else
+        {
+           throw new Exception("Producto no Encontrado");
+        }
     }
 
     public void ModificarNombre(string? cuenta, string? nuevoNombre)
@@ -105,7 +109,7 @@ public class CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner un nombre vacío.\n");
+            throw new Exception("No puedes poner un nombre vacío.");
         }
     }
 
@@ -123,7 +127,7 @@ public class CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner una contrasena Vacio\n");
+            throw new Exception("No puedes poner una contrasena vacia");
         }
     }
 
@@ -146,12 +150,15 @@ public class CuentaUsuariosManager
         var history = new StringBuilder();
 
 
-        history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
-
-        foreach (var item in usuario.HistorialCompra)
+        if (usuario != null)
         {
-            usuario.Dinero += item.PrecioCopia;
-            history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+            history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
+
+            foreach (var item in usuario.HistorialCompra)
+            {
+                usuario.Dinero += item.PrecioCopia;
+                history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+            }
         }
 
         return history.ToString();
