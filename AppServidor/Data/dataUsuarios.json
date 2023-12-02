@@ -2,7 +2,7 @@
   {
     "IdCuenta": 1,
     "Nombre": "admin",
-    "Contrasena": "123",
+    "Contrasena": "admin",
     "Dinero": 0,
     "HistorialCompra": []
   },

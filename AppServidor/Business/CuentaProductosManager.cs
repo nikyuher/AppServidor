@@ -19,6 +19,22 @@ public class CuentaProductosManager : CuentaUsuariosManager
 
     public void CrearProducto(string? nombre, decimal precio)
     {
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            throw new Exception("No puedes poner un nombre vacio");
+        }
+
+        if (ListaProductos.Any(u => u.NombreProducto == nombre))
+        {
+            throw new Exception("Ya existe un producto");
+        }
+
+        if (precio <= 0)
+        {
+            throw new Exception("No puedes poner un precio negativo.");
+        }
+
+
         CuentaProductos nuevaProducto = new CuentaProductos { NombreProducto = nombre, PrecioProducto = precio, Fecha = DateTime.Now };
 
         ListaProductos.Add(nuevaProducto);

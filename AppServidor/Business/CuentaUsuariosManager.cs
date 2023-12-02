@@ -19,6 +19,26 @@ public class CuentaUsuariosManager
 
     public void CrearCuenta(string? nombre, string? contraseña)
     {
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            throw new Exception("No puedes poner un nombre vacio");
+        }
+
+        if (ListaUsuarios.Any(u => u.Nombre == nombre))
+        {
+            throw new Exception("Este nombre ya esta en uso.");
+        }
+
+        if (string.IsNullOrWhiteSpace(contraseña))
+        {
+            throw new Exception("No puedes contraseña vacia");
+        }
+
+        if (ListaUsuarios.Any(u => u.Contrasena == contraseña))
+        {
+            throw new Exception("Esta contraseña ya esta en uso.");
+        }
+
         var nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };
 
         ListaUsuarios.Add(nuevaCuenta);

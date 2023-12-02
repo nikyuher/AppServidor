@@ -207,44 +207,57 @@ public class MenuOpciones
 
     protected void CrearCuenta()
     {
-        Console.Write("Ingrese nombre de usuario: ");
-        string? nombre = Console.ReadLine();
+        try
+        {
+            Console.WriteLine("\nCREANDO CUENTA\n");
 
-        Console.Write("Ingrese contraseña: ");
-        string? contraseña = Console.ReadLine();
+            Console.Write("Crea un Nombre: ");
+            string? nombre = Console.ReadLine();
 
-        cuentaManager.CrearCuenta(nombre, contraseña);
+            Console.Write("Crea una Contraseña: ");
+            string? contraseña = Console.ReadLine();
 
-        Console.WriteLine("\nCuenta creada exitosamente.\n");
+            cuentaManager.CrearCuenta(nombre, contraseña);
+
+            Console.WriteLine("\nCuenta creada exitosamente.\n");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+        }
     }
 
     protected void CrearProducto()
     {
         if (NombreUsuario == "admin")
         {
-            Console.WriteLine("Escribe el nombre del producto.");
-
-            string? nombre = Console.ReadLine();
-
-            Console.WriteLine("Ponle un precio al producto.");
-            string? precioConvert = Console.ReadLine();
-            decimal precio = 0;
-
-            while (!decimal.TryParse(precioConvert, out precio))
+            try
             {
-                Console.WriteLine("\nEse no es un numero.\n");
-                precioConvert = Console.ReadLine();
-            }
+                Console.WriteLine("\nAÑADIENDO PRODUCTO\n");
 
-            if (precio > 0)
-            {
+                Console.WriteLine("Escribe el nombre del producto.");
+
+                string? nombre = Console.ReadLine();
+
+                Console.WriteLine("Ponle un precio al producto.");
+                string? precioConvert = Console.ReadLine();
+                decimal precio = 0;
+
+                while (!decimal.TryParse(precioConvert, out precio))
+                {
+                    Console.WriteLine("\nEse no es un numero.\n");
+                    precioConvert = Console.ReadLine();
+                }
+
                 cuentaProducto.CrearProducto(nombre, precio);
 
+                Console.WriteLine("\nProducto añadido exitosamente.\n");
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("\nNo puede ponerle Precios Negativos\n");
+                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
+
         }
         else
         {
