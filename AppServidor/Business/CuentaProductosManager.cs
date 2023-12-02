@@ -19,27 +19,47 @@ public class CuentaProductosManager : CuentaUsuariosManager
 
     public void CrearProducto(string? nombre, decimal precio)
     {
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            throw new Exception("No puedes poner un nombre vacio");
+        }
+
+        if (ListaProductos.Any(u => u.NombreProducto == nombre))
+        {
+            throw new Exception("Ya existe un producto");
+        }
+
+        if (precio <= 0)
+        {
+            throw new Exception("No puedes poner un precio negativo.");
+        }
+
+
         CuentaProductos nuevaProducto = new CuentaProductos { NombreProducto = nombre, PrecioProducto = precio, Fecha = DateTime.Now };
 
         ListaProductos.Add(nuevaProducto);
         datosProducto.SaveJson(ListaProductos);
     }
 
-    public void ModificarNombreProducto(string? producto, string? nuevoProducto)
+    public void ModificarNombreProducto(string? nombreProducto, string? nuevoNombreProducto)
     {
-        if (!string.IsNullOrWhiteSpace(nuevoProducto))
-        {
-            var Producto = ListaProductos.Find(u => u.NombreProducto == producto);
+        var producto = ListaProductos.Find(u => u.NombreProducto == nombreProducto);
 
-            if (Producto != null)
+        if (producto != null)
+        {
+            if (!string.IsNullOrWhiteSpace(nuevoNombreProducto))
             {
-                Producto.NombreProducto = nuevoProducto;
+                producto.NombreProducto = nuevoNombreProducto;
                 datosProducto.SaveJson(ListaProductos);
+            }
+            else
+            {
+                throw new Exception("No puedes dejar el nombre vacío.");
             }
         }
         else
         {
-            Console.WriteLine("\nNo puedes el nombre vacio\n");
+            throw new InvalidOperationException("Producto no encontrado.");
         }
     }
 
@@ -57,7 +77,7 @@ public class CuentaProductosManager : CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner numeros negativos\n");
+            throw new Exception("No puedes poner numeros negativos");
         }
     }
 
@@ -69,6 +89,10 @@ public class CuentaProductosManager : CuentaUsuariosManager
         {
             ListaProductos.Remove(Producto);
             datosProducto.SaveJson(ListaProductos);
+        }
+        else
+        {
+            throw new InvalidOperationException("Producto no encontrado");
         }
     }
 

@@ -101,7 +101,7 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine($"Cuenta de {NombreUsuario} Dinero:{DineroUsuario}\n");
+            Console.WriteLine($"Cuenta de {NombreUsuario} Dinero: $ {DineroUsuario}\n");
             Console.WriteLine("1. Cambiar Nombre");
             Console.WriteLine("2. Cambiar Contraseña");
             Console.WriteLine("3. Agregar Dinero");
@@ -160,9 +160,11 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine("1. Anadir Producto");
-            Console.WriteLine("2. Modificar Producto");
-            Console.WriteLine("3. Eliminar Producto");
+            Console.WriteLine("Cuenta de Administrador\n");
+            Console.WriteLine("1. Lista de Productos");
+            Console.WriteLine("2. Anadir Producto");
+            Console.WriteLine("3. Modificar Producto");
+            Console.WriteLine("4. Eliminar Producto");
             Console.WriteLine("0. Salir Cuenta");
 
             string? opcion = Console.ReadLine();
@@ -177,17 +179,20 @@ public class MenuOpciones
             switch (numOption)
             {
                 case 1:
-                    CrearProducto();
+                    ListaProductos();
                     break;
 
                 case 2:
-                    ModificarProducto();
+                    CrearProducto();
                     break;
 
                 case 3:
-                    EliminarProducto();
+                    ModificarProducto();
                     break;
 
+                case 4:
+                    EliminarProducto();
+                    break;
                 case 0:
                     CerrarSesion();
                     MenuGeneral();
@@ -202,44 +207,57 @@ public class MenuOpciones
 
     protected void CrearCuenta()
     {
-        Console.Write("Ingrese nombre de usuario: ");
-        string? nombre = Console.ReadLine();
+        try
+        {
+            Console.WriteLine("\nCREANDO CUENTA\n");
 
-        Console.Write("Ingrese contraseña: ");
-        string? contraseña = Console.ReadLine();
+            Console.Write("Crea un Nombre: ");
+            string? nombre = Console.ReadLine();
 
-        cuentaManager.CrearCuenta(nombre, contraseña);
+            Console.Write("Crea una Contraseña: ");
+            string? contraseña = Console.ReadLine();
 
-        Console.WriteLine("\nCuenta creada exitosamente.\n");
+            cuentaManager.CrearCuenta(nombre, contraseña);
+
+            Console.WriteLine("\nCuenta creada exitosamente.\n");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+        }
     }
 
     protected void CrearProducto()
     {
         if (NombreUsuario == "admin")
         {
-            Console.WriteLine("Escribe el nombre del producto.");
-
-            string? nombre = Console.ReadLine();
-
-            Console.WriteLine("Ponle un precio al producto.");
-            string? precioConvert = Console.ReadLine();
-            decimal precio = 0;
-
-            while (!decimal.TryParse(precioConvert, out precio))
+            try
             {
-                Console.WriteLine("\nEse no es un numero.\n");
-                precioConvert = Console.ReadLine();
-            }
+                Console.WriteLine("\nAÑADIENDO PRODUCTO\n");
 
-            if (precio > 0)
-            {
+                Console.WriteLine("Escribe el nombre del producto.");
+
+                string? nombre = Console.ReadLine();
+
+                Console.WriteLine("Ponle un precio al producto.");
+                string? precioConvert = Console.ReadLine();
+                decimal precio = 0;
+
+                while (!decimal.TryParse(precioConvert, out precio))
+                {
+                    Console.WriteLine("\nEse no es un numero.\n");
+                    precioConvert = Console.ReadLine();
+                }
+
                 cuentaProducto.CrearProducto(nombre, precio);
 
+                Console.WriteLine("\nProducto añadido exitosamente.\n");
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("\nNo puede ponerle Precios Negativos\n");
+                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
+
         }
         else
         {
@@ -295,26 +313,28 @@ public class MenuOpciones
 
         if (NombreUsuario != null)
         {
-            Console.WriteLine("Cuanto dinero quieres agregar");
-            string? convert = Console.ReadLine();
-
-            int dinero = 0;
-
-            while (!int.TryParse(convert, out dinero))
-            {
-                Console.WriteLine("\nEse no es un numero.\n");
-                convert = Console.ReadLine();
-            }
 
             try
             {
+                Console.WriteLine("Cuanto dinero quieres agregar");
+                string? convert = Console.ReadLine();
+
+                int dinero = 0;
+
+                while (!int.TryParse(convert, out dinero))
+                {
+                    Console.WriteLine("\nEse no es un numero.\n");
+                    convert = Console.ReadLine();
+                }
+
                 cuentaManager.AgregarDinero(NombreUsuario, dinero);
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+
                 Console.WriteLine("\nDinero añadido exitosamente.\n");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("\nNo se puede añadir negativos\n");
+                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
         }
         else
@@ -327,7 +347,8 @@ public class MenuOpciones
         Console.WriteLine("Escrime tu nuevo nombre: ");
         string? nombreNuevo = Console.ReadLine();
 
-        if (!string.IsNullOrWhiteSpace(nombreNuevo))
+
+        try
         {
             cuentaManager.ModificarNombre(NombreUsuario, nombreNuevo);
 
@@ -335,9 +356,9 @@ public class MenuOpciones
 
             Console.WriteLine("\nCambio de nombre exitoso.\n");
         }
-        else
+        catch (Exception e)
         {
-            Console.WriteLine("\nNo puedes poner un nombre vacio.\n");
+            Console.WriteLine($"\nOcurrio un Error: {e.Message}\n");
         }
     }
 
@@ -346,7 +367,7 @@ public class MenuOpciones
         Console.WriteLine("Escrime tu nueva Contrasena: ");
         string? nuevaContra = Console.ReadLine();
 
-        if (!string.IsNullOrWhiteSpace(nuevaContra))
+        try
         {
             cuentaManager.ModificarContraseña(NombreUsuario, nuevaContra);
 
@@ -354,9 +375,9 @@ public class MenuOpciones
 
             Console.WriteLine("\nCambio de nombre exitoso.\n");
         }
-        else
+        catch (Exception e)
         {
-            Console.WriteLine("\nNo puedes poner una contraseña vacia.\n");
+            Console.WriteLine($"\nOcurrio un Error: {e.Message}\n");
         }
     }
 
@@ -372,44 +393,31 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("Que producto modificara: ");
-            string? ProductoViejo = Console.ReadLine();
+            Console.WriteLine("¿Que producto modificara?: ");
+            string? productoViejo = Console.ReadLine();
 
-            Console.WriteLine("Escrime el nuevo nombre: ");
-            string? nuevaProducto = Console.ReadLine();
 
-            if (!string.IsNullOrWhiteSpace(nuevaProducto))
+            Console.WriteLine("Escriba el nuevo nombre: ");
+            string? nuevoProducto = Console.ReadLine();
+
+            cuentaProducto.ModificarNombreProducto(productoViejo, nuevoProducto);
+            Console.WriteLine("\nNombre cambiado exitosamente.\n");
+
+            Console.WriteLine("Escriba el nuevo precio: ");
+            string? precioInput = Console.ReadLine();
+
+            if (decimal.TryParse(precioInput, out decimal nuevoPrecio) && nuevoPrecio >= 0)
             {
-                cuentaProducto.ModificarNombreProducto(ProductoViejo, nuevaProducto);
-
-
-                Console.WriteLine("Escribe el nuevo precio");
-                string? convert = Console.ReadLine();
-
-                decimal dinero = 0;
-
-                while (!decimal.TryParse(convert, out dinero))
-                {
-                    Console.WriteLine("\nEse no es un numero.\n");
-                    convert = Console.ReadLine();
-                }
-
-                cuentaProducto.ModificarPrecioProducto(nuevaProducto, dinero);
-
-                Console.WriteLine("\nCambio exitoso.\n");
-            }
-            else
-            {
-                Console.WriteLine("\nNo puedes poner el nombre vacia.\n");
+                cuentaProducto.ModificarPrecioProducto(nuevoProducto, nuevoPrecio);
+                Console.WriteLine("\nPrecio cambiado exitosamente.\n");
             }
         }
         catch (Exception e)
         {
-
-            Console.WriteLine("No se encontro el Producto" + e);
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
         }
-
     }
+
 
     protected void EliminarProducto()
     {
@@ -420,14 +428,14 @@ public class MenuOpciones
 
             if (!string.IsNullOrWhiteSpace(eliminar))
             {
-               cuentaProducto.EliminarProducto(eliminar);
-               Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
+                cuentaProducto.EliminarProducto(eliminar);
+                Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
             }
         }
         catch (Exception e)
         {
 
-            Console.WriteLine("No se encontro el Producto" + e);
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
         }
     }
 
@@ -447,11 +455,12 @@ public class MenuOpciones
 
                 cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+
                 Console.WriteLine("Producto Comprado Correctamente.\n");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("No se encontro el Producto o no tienes Dinero\n");
+                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
         }
         else

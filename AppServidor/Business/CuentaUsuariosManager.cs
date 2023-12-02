@@ -19,6 +19,26 @@ public class CuentaUsuariosManager
 
     public void CrearCuenta(string? nombre, string? contraseña)
     {
+        if (string.IsNullOrWhiteSpace(nombre))
+        {
+            throw new Exception("No puedes poner un nombre vacio");
+        }
+
+        if (ListaUsuarios.Any(u => u.Nombre == nombre))
+        {
+            throw new Exception("Este nombre ya esta en uso.");
+        }
+
+        if (string.IsNullOrWhiteSpace(contraseña))
+        {
+            throw new Exception("No puedes contraseña vacia");
+        }
+
+        if (ListaUsuarios.Any(u => u.Contrasena == contraseña))
+        {
+            throw new Exception("Esta contraseña ya esta en uso.");
+        }
+
         var nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };
 
         ListaUsuarios.Add(nuevaCuenta);
@@ -38,11 +58,11 @@ public class CuentaUsuariosManager
 
     public decimal ObtenerDineroUsuario(string? nombre)
     {
-        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
         decimal Dinero = 0;
-        if (añadirDinero != null)
+        if (usuario != null)
         {
-            Dinero = añadirDinero.Dinero;
+            Dinero = usuario.Dinero;
 
             return Dinero;
         }
@@ -51,17 +71,21 @@ public class CuentaUsuariosManager
 
     public void AgregarDinero(string? nombre, decimal dinero)
     {
-        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
 
         if (dinero <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(dinero), "No puedes agregar numero Negativos");
+            throw new Exception("No puedes agregar numero Negativos");
         }
 
-        if (añadirDinero != null)
+        if (usuario != null)
         {
-            añadirDinero.Dinero += dinero;
+            usuario.Dinero += dinero;
             datosUsuarios.SaveJson(ListaUsuarios);
+        }
+        else
+        {
+            throw new Exception("No se encontro al usuario");
         }
     }
 
@@ -89,6 +113,10 @@ public class CuentaUsuariosManager
                 datosUsuarios.SaveJson(ListaUsuarios);
             }
         }
+        else
+        {
+            throw new Exception("Producto no Encontrado");
+        }
     }
 
     public void ModificarNombre(string? cuenta, string? nuevoNombre)
@@ -105,7 +133,7 @@ public class CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner un nombre vacío.\n");
+            throw new Exception("No puedes poner un nombre vacío.");
         }
     }
 
@@ -123,7 +151,7 @@ public class CuentaUsuariosManager
         }
         else
         {
-            Console.WriteLine("\nNo puedes poner una contrasena Vacio\n");
+            throw new Exception("No puedes poner una contrasena vacia");
         }
     }
 
@@ -146,12 +174,15 @@ public class CuentaUsuariosManager
         var history = new StringBuilder();
 
 
-        history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
-
-        foreach (var item in usuario.HistorialCompra)
+        if (usuario != null)
         {
-            usuario.Dinero += item.PrecioCopia;
-            history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+            history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
+
+            foreach (var item in usuario.HistorialCompra)
+            {
+                usuario.Dinero += item.PrecioCopia;
+                history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+            }
         }
 
         return history.ToString();

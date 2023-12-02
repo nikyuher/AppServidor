@@ -2,19 +2,19 @@
   {
     "IdCuenta": 1,
     "Nombre": "admin",
-    "Contrasena": "123",
+    "Contrasena": "admin",
     "Dinero": 0,
+    "HistorialCompra": []
+  },
+  {
+    "IdCuenta": 2,
+    "Nombre": "nicolas",
+    "Contrasena": "123",
+    "Dinero": 2,
     "HistorialCompra": []
   },
   {
     "IdCuenta": 3,
-    "Nombre": "nico",
-    "Contrasena": "123",
-    "Dinero": 0,
-    "HistorialCompra": []
-  },
-  {
-    "IdCuenta": 4,
     "Nombre": "jose",
     "Contrasena": "123",
     "Dinero": 0,
