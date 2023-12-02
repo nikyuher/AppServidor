@@ -38,11 +38,11 @@ public class CuentaUsuariosManager
 
     public decimal ObtenerDineroUsuario(string? nombre)
     {
-        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
         decimal Dinero = 0;
-        if (añadirDinero != null)
+        if (usuario != null)
         {
-            Dinero = añadirDinero.Dinero;
+            Dinero = usuario.Dinero;
 
             return Dinero;
         }
@@ -51,17 +51,21 @@ public class CuentaUsuariosManager
 
     public void AgregarDinero(string? nombre, decimal dinero)
     {
-        var añadirDinero = ListaUsuarios.Find(u => u.Nombre == nombre);
+        var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
 
         if (dinero <= 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(dinero), "No puedes agregar numero Negativos");
+            throw new Exception("No puedes agregar numero Negativos");
         }
 
-        if (añadirDinero != null)
+        if (usuario != null)
         {
-            añadirDinero.Dinero += dinero;
+            usuario.Dinero += dinero;
             datosUsuarios.SaveJson(ListaUsuarios);
+        }
+        else
+        {
+            throw new Exception("No se encontro al usuario");
         }
     }
 
@@ -91,7 +95,7 @@ public class CuentaUsuariosManager
         }
         else
         {
-           throw new Exception("Producto no Encontrado");
+            throw new Exception("Producto no Encontrado");
         }
     }
 

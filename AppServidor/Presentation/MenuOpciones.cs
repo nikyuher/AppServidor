@@ -296,26 +296,28 @@ public class MenuOpciones
 
         if (NombreUsuario != null)
         {
-            Console.WriteLine("Cuanto dinero quieres agregar");
-            string? convert = Console.ReadLine();
-
-            int dinero = 0;
-
-            while (!int.TryParse(convert, out dinero))
-            {
-                Console.WriteLine("\nEse no es un numero.\n");
-                convert = Console.ReadLine();
-            }
 
             try
             {
+                Console.WriteLine("Cuanto dinero quieres agregar");
+                string? convert = Console.ReadLine();
+
+                int dinero = 0;
+
+                while (!int.TryParse(convert, out dinero))
+                {
+                    Console.WriteLine("\nEse no es un numero.\n");
+                    convert = Console.ReadLine();
+                }
+
                 cuentaManager.AgregarDinero(NombreUsuario, dinero);
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+                
                 Console.WriteLine("\nDinero añadido exitosamente.\n");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("\nNo se puede añadir negativos\n");
+                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
         }
         else
