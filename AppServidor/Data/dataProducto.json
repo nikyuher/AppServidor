@@ -2,37 +2,19 @@
   {
     "IdProducto": 1,
     "NombreProducto": "patata",
-    "PrecioProducto": 20,
-    "Fecha": "2023-12-02T03:58:31.5928897+01:00"
+    "PrecioProducto": 10,
+    "Fecha": "2023-12-02T18:31:41.7596552+01:00"
   },
   {
     "IdProducto": 2,
-    "NombreProducto": "pollo",
-    "PrecioProducto": 40,
-    "Fecha": "2023-12-02T04:01:11.7867135+01:00"
+    "NombreProducto": "carne",
+    "PrecioProducto": 50,
+    "Fecha": "2023-12-02T18:31:53.6083735+01:00"
   },
   {
     "IdProducto": 3,
-    "NombreProducto": "oro",
-    "PrecioProducto": 1000,
-    "Fecha": "2023-12-02T04:20:30.2584897+01:00"
-  },
-  {
-    "IdProducto": 4,
-    "NombreProducto": "reloj",
-    "PrecioProducto": 80,
-    "Fecha": "2023-12-02T14:15:14.603264+01:00"
-  },
-  {
-    "IdProducto": 5,
-    "NombreProducto": "melon",
+    "NombreProducto": "huevos",
     "PrecioProducto": 30,
-    "Fecha": "2023-12-02T15:23:09.0187558+01:00"
-  },
-  {
-    "IdProducto": 6,
-    "NombreProducto": "mani",
-    "PrecioProducto": 40,
-    "Fecha": "2023-12-02T15:36:53.1538684+01:00"
+    "Fecha": "2023-12-02T18:32:14.5626616+01:00"
   }
 ]

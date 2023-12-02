@@ -351,6 +351,8 @@ public class MenuOpciones
 
     protected void IniciarSesion()
     {
+        Console.WriteLine("\nINICIANDO SESION\n");
+
         Console.Write("Ingrese nombre de usuario: ");
         string? nombre = Console.ReadLine();
 
@@ -397,9 +399,10 @@ public class MenuOpciones
 
         if (NombreUsuario != null)
         {
-
             try
             {
+                Console.WriteLine("\nAÑADIENDO DINERO\n");
+
                 Console.WriteLine("Cuanto dinero quieres agregar");
                 string? convert = Console.ReadLine();
 
@@ -426,8 +429,11 @@ public class MenuOpciones
             Console.WriteLine("\nNo has iniciado sesion.\n");
         }
     }
+
     protected void CambiarNombre()
     {
+        Console.WriteLine("\nCAMBIANDO NOMBRE\n");
+
         Console.WriteLine("Escrime tu nuevo nombre: ");
         string? nombreNuevo = Console.ReadLine();
 
@@ -448,6 +454,8 @@ public class MenuOpciones
 
     protected void CambiarContraseña()
     {
+        Console.WriteLine("\nCAMBIANDO CONTRASEÑA\n");
+
         Console.WriteLine("Escrime tu nueva Contrasena: ");
         string? nuevaContra = Console.ReadLine();
 
@@ -467,8 +475,6 @@ public class MenuOpciones
 
     protected void EliminarCuenta()
     {
-
-
         try
         {
             if (NombreUsuario == "admin")
@@ -497,6 +503,8 @@ public class MenuOpciones
     {
         try
         {
+            Console.WriteLine("\nMODIFICANDO PRODUCTO\n");
+
             Console.WriteLine("¿Que producto modificara?: ");
             string? productoViejo = Console.ReadLine();
 
@@ -527,6 +535,8 @@ public class MenuOpciones
     {
         try
         {
+            Console.WriteLine("\nELIMINANDO PRODUCTO\n");
+
             Console.WriteLine("Escrime del producto a eliminar ");
             string? eliminar = Console.ReadLine();
 
@@ -551,6 +561,8 @@ public class MenuOpciones
 
             try
             {
+                Console.WriteLine("\nCOMPRANDO PRODUCTO\n");
+
                 Console.WriteLine("Escribe el nombre del producto\n");
 
                 string? producto = Console.ReadLine();

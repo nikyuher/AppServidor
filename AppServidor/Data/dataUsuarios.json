@@ -5,12 +5,5 @@
     "Contrasena": "admin",
     "Dinero": 0,
     "HistorialCompra": []
-  },
-  {
-    "IdCuenta": 2,
-    "Nombre": "nicolas",
-    "Contrasena": "123",
-    "Dinero": 202,
-    "HistorialCompra": []
   }
 ]
