@@ -16,6 +16,8 @@ RUN dotnet publish -c Release -o /Presentation/app
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime-env
 WORKDIR /app
 
+VOLUME ["/app-data"]
+
 COPY --from=build-env /src/Presentation/bin/Release/net6.0/ .
 COPY ./Data /app/Data
 
