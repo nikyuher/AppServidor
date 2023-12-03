@@ -17,10 +17,12 @@ public class MenuOpciones
 
         while (true)
         {
-            Console.WriteLine("1. Iniciar sesión");
-            Console.WriteLine("2. Crear cuenta");
-            Console.WriteLine("3. Lista de Productos");
-            Console.WriteLine("0. Salir");
+            Console.WriteLine("+-------------------------+");
+            Console.WriteLine("| 1. Iniciar sesión       |");
+            Console.WriteLine("| 2. Crear cuenta         |");
+            Console.WriteLine("| 3. Lista de Productos   |");
+            Console.WriteLine("| 0. Salir                |");
+            Console.WriteLine("+-------------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -61,10 +63,13 @@ public class MenuOpciones
 
         while (true)
         {
+            
             Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
-            Console.WriteLine("1. Configuracion de Cuenta");
-            Console.WriteLine("2. Lista de Productos");
-            Console.WriteLine("0. Salir");
+            Console.WriteLine("+---------------------------+");
+            Console.WriteLine("| 1. Configuracion de Cuenta|");
+            Console.WriteLine("| 2. Lista de Productos     |");
+            Console.WriteLine("| 0. Salir                  |");
+            Console.WriteLine("+---------------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -102,13 +107,15 @@ public class MenuOpciones
         while (true)
         {
             Console.WriteLine($"Cuenta de {NombreUsuario} Dinero: $ {DineroUsuario}\n");
-            Console.WriteLine("1. Cambiar Nombre");
-            Console.WriteLine("2. Cambiar Contraseña");
-            Console.WriteLine("3. Agregar Dinero");
-            Console.WriteLine("4. Historial Cuenta");
-            Console.WriteLine("5. Cerrar Sesion");
-            Console.WriteLine("6. Eliminar Cuenta");
-            Console.WriteLine("0. Volver atras");
+            Console.WriteLine("+-----------------------+");
+            Console.WriteLine("| 1. Cambiar Nombre     |");
+            Console.WriteLine("| 2. Cambiar Contraseña |");
+            Console.WriteLine("| 3. Agregar Dinero     |");
+            Console.WriteLine("| 4. Historial Cuenta   |");
+            Console.WriteLine("| 5. Cerrar Sesion      |");
+            Console.WriteLine("| 6. Eliminar Cuenta    |");
+            Console.WriteLine("| 0. Volver atras       |");
+            Console.WriteLine("+-----------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -161,10 +168,12 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine("Cuenta de Administrador\n");
-            Console.WriteLine("1. Administrar Usuarios");
-            Console.WriteLine("2. Administrar Productos");
-            Console.WriteLine("0. Salir Cuenta");
+            Console.WriteLine("+---------------------------+");
+            Console.WriteLine("| Cuenta de Administrador   |\n");
+            Console.WriteLine("| 1. Administrar Usuarios   |");
+            Console.WriteLine("| 2. Administrar Productos  |");
+            Console.WriteLine("| 0. Salir Cuenta           |");
+            Console.WriteLine("+---------------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -201,11 +210,13 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine("Cuenta de Administrador\n");
-            Console.WriteLine("1. Lista de Usuarios");
-            Console.WriteLine("2. Añadir Usuario");
-            Console.WriteLine("3. Eliminar Usuario");
-            Console.WriteLine("0. atras");
+            Console.WriteLine("+---------------------------+");
+            Console.WriteLine("| Cuenta de Administrador   |\n");
+            Console.WriteLine("| 1. Lista de Usuarios      |");
+            Console.WriteLine("| 2. Añadir Usuario         |");
+            Console.WriteLine("| 3. Eliminar Usuario       |");
+            Console.WriteLine("| 0. atras                  |");
+            Console.WriteLine("+---------------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
@@ -244,12 +255,14 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine("Cuenta de Administrador\n");
-            Console.WriteLine("1. Lista de Productos");
-            Console.WriteLine("2. Anadir Producto");
-            Console.WriteLine("3. Modificar Producto");
-            Console.WriteLine("4. Eliminar Producto");
-            Console.WriteLine("0. atras");
+            Console.WriteLine("+---------------------------+");
+            Console.WriteLine("| Cuenta de Administrador   |\n");
+            Console.WriteLine("| 1. Lista de Productos     |");
+            Console.WriteLine("| 2. Anadir Producto        |");
+            Console.WriteLine("| 3. Modificar Producto     |");
+            Console.WriteLine("| 4. Eliminar Producto      |");
+            Console.WriteLine("| 0. atras                  |");
+            Console.WriteLine("+---------------------------+");
 
             string? opcion = Console.ReadLine();
             int numOption = 0;

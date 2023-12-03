@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class DatosProducto
 {
     // //Funciona para manera Local sin ser Usado en Docker
-    //private string archivo = "../../Data/dataProducto.json";
+    // private string archivo = "../Data/dataProducto.json";
 
     //Sirve para docker
     private string archivo = Path.Combine("Data", "dataProducto.json");
