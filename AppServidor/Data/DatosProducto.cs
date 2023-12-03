@@ -6,7 +6,11 @@ using System.Collections.Generic;
 
 public class DatosProducto
 {
-    private string archivo = "../Data/dataProducto.json";
+    // //Funciona para manera Local sin ser Usado en Docker
+    //private string archivo = "../../Data/dataProducto.json";
+
+    //Sirve para docker
+    private string archivo = Path.Combine("Data", "dataProducto.json");
 
     public void SaveJson<T>(List<T> lista)
     {
@@ -23,7 +27,7 @@ public class DatosProducto
             string contenido = File.ReadAllText(archivo);
             return JsonSerializer.Deserialize<List<T>>(contenido) ?? new List<T>();
         }
-        
+
         return new List<T>();
     }
 }

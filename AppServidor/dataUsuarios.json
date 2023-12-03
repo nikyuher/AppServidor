@@ -1,0 +1,23 @@
+[
+  {
+    "IdCuenta": 1,
+    "Nombre": "gdf",
+    "Contrasena": "324",
+    "Dinero": 0,
+    "HistorialCompra": []
+  },
+  {
+    "IdCuenta": 2,
+    "Nombre": "asd",
+    "Contrasena": "234",
+    "Dinero": 0,
+    "HistorialCompra": []
+  },
+  {
+    "IdCuenta": 5,
+    "Nombre": "sfd",
+    "Contrasena": "231",
+    "Dinero": 0,
+    "HistorialCompra": []
+  }
+]

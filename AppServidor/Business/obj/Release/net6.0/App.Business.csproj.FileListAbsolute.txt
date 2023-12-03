@@ -1,0 +1,15 @@
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Release\net6.0\App.Business.deps.json
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Release\net6.0\App.Business.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Release\net6.0\App.Business.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Release\net6.0\App.Data.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\bin\Release\net6.0\App.Data.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.csproj.AssemblyReference.cache
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.AssemblyInfoInputs.cache
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.AssemblyInfo.cs
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.csproj.CoreCompileInputs.cache
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.csproj.CopyComplete
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\refint\App.Business.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\App.Business.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Business\obj\Release\net6.0\ref\App.Business.dll

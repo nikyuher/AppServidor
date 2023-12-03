@@ -1,0 +1,9 @@
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Presentation.exe
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Presentation.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Presentation.deps.json
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Presentation.runtimeconfig.json
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Presentation.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Business.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Data.dll
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Business.pdb
+C:\Users\nico_\Desktop\AppServidor\AppServidor\Presentation\app\App.Data.pdb
