@@ -4,6 +4,7 @@ using Data;
 using System.Text;
 using System.Collections.Generic;
 using System.Configuration.Assemblies;
+using System.Text.RegularExpressions;
 
 public class CuentaUsuariosManager
 {
@@ -37,6 +38,23 @@ public class CuentaUsuariosManager
         if (ListaUsuarios.Any(u => u.Contrasena == contraseña))
         {
             throw new Exception("Esta contraseña ya esta en uso.");
+        }
+
+        Match matchNumero = Regex.Match(contraseña, @"\d");
+        Match matchMayusculas = Regex.Match(contraseña, @"[A-Z]");
+        Match matchMinuscula = Regex.Match(contraseña, @"[a-z]");
+
+        if (!matchMayusculas.Success)
+        {
+            throw new Exception("No contiene Mayusculas.");
+        }
+        if (!matchMinuscula.Success)
+        {
+            throw new Exception("No contiene Minusculas.");
+        }
+        if (!matchNumero.Success)
+        {
+            throw new Exception("No contiene Numeros.");
         }
 
         var nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };

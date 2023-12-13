@@ -1,5 +1,6 @@
 namespace Presentation;
 
+using System.Diagnostics;
 using Business;
 
 public class MenuOpciones
@@ -63,7 +64,7 @@ public class MenuOpciones
 
         while (true)
         {
-            
+
             Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
             Console.WriteLine("+---------------------------+");
             Console.WriteLine("| 1. Configuracion de Cuenta|");
@@ -574,18 +575,33 @@ public class MenuOpciones
 
             try
             {
-                Console.WriteLine("\nCOMPRANDO PRODUCTO\n");
 
-                Console.WriteLine("Escribe el nombre del producto\n");
+                Console.WriteLine("Quieres Comprar: S/N ");
+                string? confirmacion = Console.ReadLine();
 
-                string? producto = Console.ReadLine();
+                if (confirmacion != "S" && confirmacion != "N" && confirmacion != "s" && confirmacion != "n")
+                {
+                    throw new Exception("Esa no es una opcion valida");
+                }
 
-                NombreProducto = producto;
+                if (confirmacion == "S" || confirmacion == "s")
+                {
 
-                cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
-                DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+                    Console.WriteLine("\nCOMPRANDO PRODUCTO\n");
 
-                Console.WriteLine("Producto Comprado Correctamente.\n");
+                    Console.WriteLine("Escribe el nombre del producto\n");
+
+                    string? producto = Console.ReadLine();
+
+                    NombreProducto = producto;
+
+                    cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
+                    DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
+
+                    Console.WriteLine("Producto Comprado Correctamente.\n");
+
+                }
+
             }
             catch (Exception e)
             {

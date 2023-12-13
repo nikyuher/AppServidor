@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 public class DatosUsuarios
 {
-    // //Funciona para manera Local sin ser Usado en Docker
-    // private string archivo = "../Data/dataUsuarios.json";
+    //Funciona para manera Local sin ser Usado en Docker
+    private string archivo = "../Data/dataUsuarios.json";
 
-    //Sirve para docker
-    private string archivo = Path.Combine("Data", "dataUsuarios.json");
+    // //Sirve para docker
+    // private string archivo = Path.Combine("Data", "dataUsuarios.json");
 
     public void SaveJson<T>(List<T> lista)
     {

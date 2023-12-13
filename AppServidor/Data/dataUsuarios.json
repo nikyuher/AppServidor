@@ -5,5 +5,25 @@
     "Contrasena": "admin",
     "Dinero": 0,
     "HistorialCompra": []
+  },
+  {
+    "IdCuenta": 2,
+    "Nombre": "nicolas",
+    "Contrasena": "123",
+    "Dinero": 990,
+    "HistorialCompra": [
+      {
+        "NombreCopia": "patata",
+        "PrecioCopia": 10,
+        "FechaCopia": "2023-12-13T16:31:23.2414669+01:00"
+      }
+    ]
+  },
+  {
+    "IdCuenta": 5,
+    "Nombre": "jose",
+    "Contrasena": "hola3Mundo",
+    "Dinero": 0,
+    "HistorialCompra": []
   }
 ]
