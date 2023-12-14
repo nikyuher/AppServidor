@@ -57,7 +57,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -102,7 +102,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -154,7 +154,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -219,7 +219,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -264,7 +264,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -319,7 +319,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
@@ -381,7 +381,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
+                    AnsiConsole.WriteLine("Opción no válida. Inténtelo de nuevo.");
                     break;
             }
         }
