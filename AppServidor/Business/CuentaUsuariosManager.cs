@@ -21,41 +21,29 @@ public class CuentaUsuariosManager
     public void CrearCuenta(string? nombre, string? contraseña)
     {
         if (string.IsNullOrWhiteSpace(nombre))
-        {
-            throw new Exception("No puedes poner un nombre vacio");
-        }
+            throw new Exception("No puedes poner un nombre vacío");
 
         if (ListaUsuarios.Any(u => u.Nombre == nombre))
-        {
-            throw new Exception("Este nombre ya esta en uso.");
-        }
+            throw new Exception("Este nombre ya está en uso.");
 
         if (string.IsNullOrWhiteSpace(contraseña))
-        {
-            throw new Exception("No puedes contraseña vacia");
-        }
+            throw new Exception("No puedes contraseña vacía");
 
         if (ListaUsuarios.Any(u => u.Contrasena == contraseña))
-        {
-            throw new Exception("Esta contraseña ya esta en uso.");
-        }
+            throw new Exception("Esta contraseña ya está en uso.");
 
         Match matchNumero = Regex.Match(contraseña, @"\d");
         Match matchMayusculas = Regex.Match(contraseña, @"[A-Z]");
         Match matchMinuscula = Regex.Match(contraseña, @"[a-z]");
 
         if (!matchMayusculas.Success)
-        {
             throw new Exception("No contiene Mayusculas.");
-        }
+
         if (!matchMinuscula.Success)
-        {
             throw new Exception("No contiene Minusculas.");
-        }
+
         if (!matchNumero.Success)
-        {
             throw new Exception("No contiene Numeros.");
-        }
 
         var nuevaCuenta = new CuentaUsuarios { Nombre = nombre, Contrasena = contraseña };
 
@@ -225,4 +213,39 @@ public class CuentaUsuariosManager
         return history.ToString();
     }
 
+    public List<CuentaUsuarios> BuscarUsuarios(string busqueda)
+    {
+        if (string.IsNullOrWhiteSpace(busqueda))
+        {
+            throw new ArgumentException("No puedes poner Busqueda vacia.");
+        }
+
+        var resultados = ListaUsuarios
+            .Where(nombre => nombre.Nombre?.StartsWith(busqueda, StringComparison.OrdinalIgnoreCase) ?? false)
+            .ToList();
+
+        return resultados;
+    }
+
+    public string ResultadosUsuario(List<CuentaUsuarios> resultados)
+    {
+        var history = new StringBuilder();
+
+        if (resultados.Any())
+        {
+            history.AppendLine("Resultado de la búsqueda:");
+            history.AppendLine("Usuarios\tContraseñas\tDinero");
+
+            foreach (var item in resultados)
+            {
+                history.AppendLine($"{item.Nombre}\t\t{item.Contrasena}\t\t{item.Dinero}");
+            }
+        }
+        else
+        {
+            throw new Exception("No se encontraron resultados de la búsqueda.");
+        }
+
+        return history.ToString();
+    }
 }

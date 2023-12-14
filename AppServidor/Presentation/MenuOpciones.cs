@@ -132,7 +132,7 @@ public class MenuOpciones
                 case 2:
                     if (true)
                     {
-                        if (OpcionBusqueda())
+                        if (BusquedaProducto())
                         {
                             ComprarProducto();
                         }
@@ -262,8 +262,9 @@ public class MenuOpciones
             Console.WriteLine("+---------------------------+");
             Console.WriteLine("| Cuenta de Administrador   |\n");
             Console.WriteLine("| 1. Lista de Usuarios      |");
-            Console.WriteLine("| 2. Añadir Usuario         |");
-            Console.WriteLine("| 3. Eliminar Usuario       |");
+            Console.WriteLine("| 2. Buscar Usuarios        |");
+            Console.WriteLine("| 3. Añadir Usuario         |");
+            Console.WriteLine("| 4. Eliminar Usuario       |");
             Console.WriteLine("| 0. atras                  |");
             Console.WriteLine("+---------------------------+");
 
@@ -281,13 +282,18 @@ public class MenuOpciones
                 case 1:
                     ListaUsuarios();
                     break;
-
                 case 2:
+                    BusquedaUsuarios();
+                    break;
+                case 3:
                     CrearCuenta();
                     break;
 
-                case 3:
-                    EliminarCuenta();
+                case 4:
+                    if (BusquedaUsuarios())
+                    {
+                        EliminarCuenta();
+                    }
                     break;
                 case 0:
                     MenuAdministrador();
@@ -307,9 +313,10 @@ public class MenuOpciones
             Console.WriteLine("+---------------------------+");
             Console.WriteLine("| Cuenta de Administrador   |\n");
             Console.WriteLine("| 1. Lista de Productos     |");
-            Console.WriteLine("| 2. Anadir Producto        |");
-            Console.WriteLine("| 3. Modificar Producto     |");
-            Console.WriteLine("| 4. Eliminar Producto      |");
+            Console.WriteLine("| 2. Buscar Productos       |");
+            Console.WriteLine("| 3. Anadir Producto        |");
+            Console.WriteLine("| 4. Modificar Producto     |");
+            Console.WriteLine("| 5. Eliminar Producto      |");
             Console.WriteLine("| 0. atras                  |");
             Console.WriteLine("+---------------------------+");
 
@@ -327,17 +334,25 @@ public class MenuOpciones
                 case 1:
                     ListaProductos();
                     break;
-
                 case 2:
+                    BusquedaProducto();
+                    break;
+                case 3:
                     CrearProducto();
                     break;
 
-                case 3:
-                    ModificarProducto();
+                case 4:
+                    if (BusquedaProducto())
+                    {
+                        ModificarProducto();
+                    }
                     break;
 
-                case 4:
-                    EliminarProducto();
+                case 5:
+                    if (BusquedaProducto())
+                    {
+                        EliminarProducto();
+                    }
                     break;
                 case 0:
                     MenuAdministrador();
@@ -663,7 +678,7 @@ public class MenuOpciones
     }
 
 
-    protected bool OpcionBusqueda()
+    protected bool BusquedaProducto()
     {
         try
         {
@@ -674,7 +689,32 @@ public class MenuOpciones
             {
                 List<CuentaProductos> resultados = cuentaProducto.BuscarProductos(busqueda);
 
-                Console.WriteLine(cuentaProducto.MostrarResultados(resultados));
+                Console.WriteLine(cuentaProducto.ResultadosProducto(resultados));
+
+                return true;
+            }
+
+            return false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            return false;
+        }
+    }
+
+    protected bool BusquedaUsuarios()
+    {
+        try
+        {
+            Console.WriteLine("¿Que usuario Buscas?");
+            string? busqueda = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(busqueda))
+            {
+                List<CuentaUsuarios> resultados = cuentaManager.BuscarUsuarios(busqueda);
+
+                Console.WriteLine(cuentaManager.ResultadosUsuario(resultados));
 
                 return true;
             }

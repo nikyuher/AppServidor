@@ -126,7 +126,7 @@ public class CuentaProductosManager : CuentaUsuariosManager
         return resultados;
     }
 
-    public string MostrarResultados(List<CuentaProductos> resultados)
+    public string ResultadosProducto(List<CuentaProductos> resultados)
     {
         var history = new StringBuilder();
 
@@ -142,7 +142,7 @@ public class CuentaProductosManager : CuentaUsuariosManager
         }
         else
         {
-           throw new Exception("No se encontraron resultados para la búsqueda.");
+            throw new Exception("No se encontraron resultados de la búsqueda.");
         }
 
         return history.ToString();
