@@ -1,8 +1,0 @@
-2023-12-14 17:32:17.036 +01:00 [ERR] Ocurrió un error en la aplicación.
-System.Exception: Este nombre ya está en uso.
-   at Business.CuentaUsuariosManager.CrearCuenta(String nombre, String contraseña) in C:\Users\nico_\Documents\AppServidor\AppServidor\Business\CuentaUsuariosManager.cs:line 28
-   at Presentation.MenuOpciones.CrearCuenta() in C:\Users\nico_\Documents\AppServidor\AppServidor\Presentation\MenuOpciones.cs:line 404
-2023-12-14 17:33:40.891 +01:00 [ERR] Ocurrió un error en la aplicación.
-System.Exception: No se encontraron resultados de la búsqueda.
-   at Business.CuentaUsuariosManager.ResultadosUsuario(List`1 resultados) in C:\Users\nico_\Documents\AppServidor\AppServidor\Business\CuentaUsuariosManager.cs:line 262
-   at Presentation.MenuOpciones.BusquedaUsuarios() in C:\Users\nico_\Documents\AppServidor\AppServidor\Presentation\MenuOpciones.cs:line 760

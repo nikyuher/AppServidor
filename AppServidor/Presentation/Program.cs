@@ -8,7 +8,7 @@ class Program
     {
         Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
-            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+            .WriteTo.File("/app-data/log.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
 
         try
