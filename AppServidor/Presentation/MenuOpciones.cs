@@ -3,7 +3,7 @@ namespace Presentation;
 using System.Diagnostics;
 using Business;
 using Spectre.Console;
-
+using Serilog;
 
 public class MenuOpciones
 {
@@ -408,6 +408,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\n[red]Ocurrio un error: {e.Message}[/]\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -440,6 +441,7 @@ public class MenuOpciones
             catch (Exception e)
             {
                 AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                Log.Error(e, "Ocurrió un error en la aplicación.");
             }
 
         }
@@ -522,6 +524,7 @@ public class MenuOpciones
             catch (Exception e)
             {
                 AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                Log.Error(e, "Ocurrió un error en la aplicación.");
             }
         }
         else
@@ -549,6 +552,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un Error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -570,6 +574,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un Error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -603,6 +608,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -634,6 +640,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -659,8 +666,8 @@ public class MenuOpciones
         }
         catch (Exception e)
         {
-
             AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
         }
     }
 
@@ -703,6 +710,7 @@ public class MenuOpciones
             catch (Exception e)
             {
                 AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                Log.Error(e, "Ocurrió un error en la aplicación.");
             }
         }
         else
@@ -733,6 +741,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
             return false;
         }
     }
@@ -758,6 +767,7 @@ public class MenuOpciones
         catch (Exception e)
         {
             AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            Log.Error(e, "Ocurrió un error en la aplicación.");
             return false;
         }
     }
