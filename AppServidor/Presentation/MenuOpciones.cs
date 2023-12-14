@@ -68,7 +68,7 @@ public class MenuOpciones
             Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
             Console.WriteLine("+---------------------------+");
             Console.WriteLine("| 1. Configuracion de Cuenta|");
-            Console.WriteLine("| 2. Lista de Productos     |");
+            Console.WriteLine("| 2. Comprar Productos      |");
             Console.WriteLine("| 0. Salir                  |");
             Console.WriteLine("+---------------------------+");
 
@@ -88,12 +88,60 @@ public class MenuOpciones
                     break;
 
                 case 2:
-                    ListaProductos();
-                    ComprarProducto();
+                    MenuComprarProducto();
                     break;
 
                 case 0:
                     Environment.Exit(0);
+                    break;
+
+                default:
+                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    break;
+            }
+        }
+    }
+
+    public void MenuComprarProducto()
+    {
+        while (true)
+        {
+            Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
+            Console.WriteLine("+---------------------------+");
+            Console.WriteLine("| 1. Lista Productos        |");
+            Console.WriteLine("| 2. Busqueda Productos     |");
+            Console.WriteLine("| 0. Salir                  |");
+            Console.WriteLine("+---------------------------+");
+
+            string? opcion = Console.ReadLine();
+            int numOption = 0;
+
+            while (!int.TryParse(opcion, out numOption))
+            {
+                Console.WriteLine("Ese no es un numero");
+                opcion = Console.ReadLine();
+            }
+
+            switch (numOption)
+            {
+                case 1:
+                    ListaProductos();
+                    ComprarProducto();
+                    break;
+
+                case 2:
+                    if (true)
+                    {
+                        if (OpcionBusqueda())
+                        {
+                            ComprarProducto();
+                        }
+                    }
+
+                    break;
+
+                case 0:
+                    MenuUsuario();
                     break;
 
                 default:
@@ -611,6 +659,32 @@ public class MenuOpciones
         else
         {
             Console.WriteLine("No has iniciado sesion.\n");
+        }
+    }
+
+
+    protected bool OpcionBusqueda()
+    {
+        try
+        {
+            Console.WriteLine("¿Que deseas buscar?");
+            string? busqueda = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(busqueda))
+            {
+                List<CuentaProductos> resultados = cuentaProducto.BuscarProductos(busqueda);
+
+                Console.WriteLine(cuentaProducto.MostrarResultados(resultados));
+
+                return true;
+            }
+
+            return false;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            return false;
         }
     }
 

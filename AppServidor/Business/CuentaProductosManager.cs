@@ -112,4 +112,40 @@ public class CuentaProductosManager : CuentaUsuariosManager
         return history.ToString();
 
     }
+    public List<CuentaProductos> BuscarProductos(string busqueda)
+    {
+        if (string.IsNullOrWhiteSpace(busqueda))
+        {
+            throw new ArgumentException("No puedes poner Busqueda vacia.");
+        }
+
+        var resultados = ListaProductos
+            .Where(producto => producto.NombreProducto?.StartsWith(busqueda, StringComparison.OrdinalIgnoreCase) ?? false)
+            .ToList();
+
+        return resultados;
+    }
+
+    public string MostrarResultados(List<CuentaProductos> resultados)
+    {
+        var history = new StringBuilder();
+
+        if (resultados.Any())
+        {
+            history.AppendLine("Resultado de la búsqueda:");
+            history.AppendLine("Producto\t\tPrecio");
+
+            foreach (var item in resultados)
+            {
+                history.AppendLine($"{item.NombreProducto}\t\t$ {item.PrecioProducto}\n");
+            }
+        }
+        else
+        {
+           throw new Exception("No se encontraron resultados para la búsqueda.");
+        }
+
+        return history.ToString();
+    }
+
 }

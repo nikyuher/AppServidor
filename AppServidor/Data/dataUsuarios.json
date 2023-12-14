@@ -10,17 +10,22 @@
     "IdCuenta": 2,
     "Nombre": "nicolas",
     "Contrasena": "123",
-    "Dinero": 990,
+    "Dinero": 980,
     "HistorialCompra": [
       {
         "NombreCopia": "patata",
         "PrecioCopia": 10,
         "FechaCopia": "2023-12-13T16:31:23.2414669+01:00"
+      },
+      {
+        "NombreCopia": "patata",
+        "PrecioCopia": 10,
+        "FechaCopia": "2023-12-14T04:34:00.8468252+01:00"
       }
     ]
   },
   {
-    "IdCuenta": 5,
+    "IdCuenta": 3,
     "Nombre": "jose",
     "Contrasena": "hola3Mundo",
     "Dinero": 0,
