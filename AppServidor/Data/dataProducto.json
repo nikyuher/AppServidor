@@ -40,5 +40,11 @@
     "NombreProducto": "carrito",
     "PrecioProducto": 40,
     "Fecha": "2023-12-14T04:40:19.2360864+01:00"
+  },
+  {
+    "IdProducto": 8,
+    "NombreProducto": "pezcado",
+    "PrecioProducto": 20,
+    "Fecha": "2023-12-14T16:46:24.028862+01:00"
   }
 ]

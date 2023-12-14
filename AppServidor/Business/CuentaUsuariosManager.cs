@@ -5,6 +5,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Configuration.Assemblies;
 using System.Text.RegularExpressions;
+using Spectre.Console;
 
 public class CuentaUsuariosManager
 {
@@ -178,40 +179,52 @@ public class CuentaUsuariosManager
 
     public string HistorialCuenta(string? nombre)
     {
-
         var usuario = ListaUsuarios.Find(u => u.Nombre == nombre);
-
-        var history = new StringBuilder();
-
+        var table = new Table();
 
         if (usuario != null)
         {
-            history.AppendLine("Fecha\t\tDinero\tPrecio\tProducto\n");
+            table.AddColumn("[u]Fecha[/]");
+            table.AddColumn("[u]Dinero[/]");
+            table.AddColumn("[u]Precio[/]");
+            table.AddColumn("[u]Producto[/]");
 
             foreach (var item in usuario.HistorialCompra)
             {
                 usuario.Dinero += item.PrecioCopia;
-                history.AppendLine($"{item.FechaCopia.ToShortDateString()}\t${usuario.Dinero}\t-$ {item.PrecioCopia}\t{item.NombreCopia}");
+                table.AddRow(
+                    $"{item.FechaCopia.ToShortDateString()}",
+                    $"${usuario.Dinero}",
+                    $"-$ {item.PrecioCopia}",
+                    $"{item.NombreCopia}"
+                );
             }
+
+            AnsiConsole.Write(table);
         }
 
-        return history.ToString();
-
+        return "";
     }
+
 
     public string AlmacenUsuarios()
     {
+        var table = new Table();
 
-        var history = new StringBuilder();
-
-        history.AppendLine("Usuarios\tContraseñas\tDinero");
+        table.AddColumn("[u]Usuarios[/]");
+        table.AddColumn("[u]Contraseñas[/]");
+        table.AddColumn("[u]Dinero[/]");
 
         foreach (var item in ListaUsuarios)
         {
-            history.AppendLine($"{item.Nombre}\t\t{item.Contrasena}\t\t{item.Dinero}");
+            table.AddRow($"{item.Nombre}", $"{item.Contrasena}", item.Dinero.ToString());
         }
-        return history.ToString();
+
+        AnsiConsole.Write(table);
+
+        return "";
     }
+
 
     public List<CuentaUsuarios> BuscarUsuarios(string busqueda)
     {
@@ -229,23 +242,28 @@ public class CuentaUsuariosManager
 
     public string ResultadosUsuario(List<CuentaUsuarios> resultados)
     {
-        var history = new StringBuilder();
+        var table = new Table();
 
         if (resultados.Any())
         {
-            history.AppendLine("Resultado de la búsqueda:");
-            history.AppendLine("Usuarios\tContraseñas\tDinero");
+            table.AddColumn("[u]Usuarios[/]");
+            table.AddColumn("[u]Contraseñas[/]");
+            table.AddColumn("[u]Dinero[/]");
 
             foreach (var item in resultados)
             {
-                history.AppendLine($"{item.Nombre}\t\t{item.Contrasena}\t\t{item.Dinero}");
+                table.AddRow($"{item.Nombre}", $"{item.Contrasena}", item.Dinero.ToString());
             }
+            AnsiConsole.Write(table);
+
         }
         else
         {
             throw new Exception("No se encontraron resultados de la búsqueda.");
         }
 
-        return history.ToString();
+
+        return "";
     }
+
 }

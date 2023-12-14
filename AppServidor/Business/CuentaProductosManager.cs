@@ -3,6 +3,7 @@ namespace Business;
 using Data;
 using System.Text;
 using System.Collections.Generic;
+using Spectre.Console;
 
 public class CuentaProductosManager : CuentaUsuariosManager
 {
@@ -98,20 +99,21 @@ public class CuentaProductosManager : CuentaUsuariosManager
 
     public string AlmacenProductos()
     {
+        var table = new Table();
 
-        var history = new StringBuilder();
-
-
-        history.AppendLine("Producto\t\tPrecio");
+        table.AddColumn("[u]Producto[/]");
+        table.AddColumn("[u]Precio[/]");
 
         foreach (var item in ListaProductos)
         {
-            history.AppendLine($"{item.NombreProducto}\t\t$ {item.PrecioProducto}\n");
+            table.AddRow($"{item.NombreProducto}", $"$ {item.PrecioProducto}");
         }
 
-        return history.ToString();
+        AnsiConsole.Write(table);
 
+        return "";
     }
+
     public List<CuentaProductos> BuscarProductos(string busqueda)
     {
         if (string.IsNullOrWhiteSpace(busqueda))
@@ -128,24 +130,27 @@ public class CuentaProductosManager : CuentaUsuariosManager
 
     public string ResultadosProducto(List<CuentaProductos> resultados)
     {
-        var history = new StringBuilder();
+        var table = new Table();
 
         if (resultados.Any())
         {
-            history.AppendLine("Resultado de la búsqueda:");
-            history.AppendLine("Producto\t\tPrecio");
+            table.AddColumn("[u]Producto[/]");
+            table.AddColumn("[u]Precio[/]");
 
             foreach (var item in resultados)
             {
-                history.AppendLine($"{item.NombreProducto}\t\t$ {item.PrecioProducto}\n");
+                table.AddRow($"{item.NombreProducto}", $"$ {item.PrecioProducto}");
             }
+
+            AnsiConsole.Write(table);
         }
         else
         {
             throw new Exception("No se encontraron resultados de la búsqueda.");
         }
 
-        return history.ToString();
+        return "";
     }
+
 
 }

@@ -2,6 +2,8 @@ namespace Presentation;
 
 using System.Diagnostics;
 using Business;
+using Spectre.Console;
+
 
 public class MenuOpciones
 {
@@ -12,25 +14,27 @@ public class MenuOpciones
     protected string? NombreUsuario;
     protected decimal DineroUsuario;
     protected string? NombreProducto;
-
     public void MenuGeneral()
     {
-
         while (true)
         {
-            Console.WriteLine("+-------------------------+");
-            Console.WriteLine("| 1. Iniciar sesión       |");
-            Console.WriteLine("| 2. Crear cuenta         |");
-            Console.WriteLine("| 3. Lista de Productos   |");
-            Console.WriteLine("| 0. Salir                |");
-            Console.WriteLine("+-------------------------+");
+            var table = new Table();
+            table.AddColumn("[u]Opción[/]");
+            table.AddColumn("[u]Descripción[/]");
+            table.AddRow("1.", "Iniciar sesión");
+            table.AddRow("2.", "Crear cuenta");
+            table.AddRow("3.", "Lista de Productos");
+            table.AddRow("", "");
+            table.AddRow("0.", "Salir");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero");
+                AnsiConsole.WriteLine("Eso no es una opcion");
                 opcion = Console.ReadLine();
             }
 
@@ -47,12 +51,13 @@ public class MenuOpciones
                 case 3:
                     ListaProductos();
                     break;
+
                 case 0:
                     Environment.Exit(0);
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
@@ -61,23 +66,24 @@ public class MenuOpciones
 
     public void MenuUsuario()
     {
-
         while (true)
         {
+            var table = new Table();
+            table.AddColumn($"[u]Cuenta de {NombreUsuario}[/]");
+            table.AddColumn($"[u]Dinero $ {DineroUsuario}[/]");
+            table.AddRow("1.", "Configuracion de Cuenta");
+            table.AddRow("2.", "Comprar Productos");
+            table.AddRow("", "");
+            table.AddRow("0.", "Salir");
 
-            Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
-            Console.WriteLine("+---------------------------+");
-            Console.WriteLine("| 1. Configuracion de Cuenta|");
-            Console.WriteLine("| 2. Comprar Productos      |");
-            Console.WriteLine("| 0. Salir                  |");
-            Console.WriteLine("+---------------------------+");
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero");
+                AnsiConsole.WriteLine("Ese no es un número");
                 opcion = Console.ReadLine();
             }
 
@@ -96,29 +102,33 @@ public class MenuOpciones
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
     }
 
+
     public void MenuComprarProducto()
     {
         while (true)
         {
-            Console.WriteLine($"Cuenta {NombreUsuario} Dinero: $ {DineroUsuario}\n");
-            Console.WriteLine("+---------------------------+");
-            Console.WriteLine("| 1. Lista Productos        |");
-            Console.WriteLine("| 2. Busqueda Productos     |");
-            Console.WriteLine("| 0. Salir                  |");
-            Console.WriteLine("+---------------------------+");
+            var table = new Table();
+            table.AddColumn($"[u]Cuenta de {NombreUsuario}[/]");
+            table.AddColumn($"[u]Dinero $ {DineroUsuario}[/]");
+            table.AddRow("1.", "Lista Productos");
+            table.AddRow("2.", "Búsqueda Productos");
+            table.AddRow("", "");
+            table.AddRow("0.", "Volver Atras");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero");
+                AnsiConsole.WriteLine("Ese no es un número");
                 opcion = Console.ReadLine();
             }
 
@@ -137,7 +147,6 @@ public class MenuOpciones
                             ComprarProducto();
                         }
                     }
-
                     break;
 
                 case 0:
@@ -145,33 +154,37 @@ public class MenuOpciones
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
     }
 
+
     public void MenuUsuarioAvanzado()
     {
         while (true)
         {
-            Console.WriteLine($"Cuenta de {NombreUsuario} Dinero: $ {DineroUsuario}\n");
-            Console.WriteLine("+-----------------------+");
-            Console.WriteLine("| 1. Cambiar Nombre     |");
-            Console.WriteLine("| 2. Cambiar Contraseña |");
-            Console.WriteLine("| 3. Agregar Dinero     |");
-            Console.WriteLine("| 4. Historial Cuenta   |");
-            Console.WriteLine("| 5. Cerrar Sesion      |");
-            Console.WriteLine("| 6. Eliminar Cuenta    |");
-            Console.WriteLine("| 0. Volver atras       |");
-            Console.WriteLine("+-----------------------+");
+            var table = new Table();
+            table.AddColumn($"[u]Cuenta de {NombreUsuario}[/]");
+            table.AddColumn($"[u]Dinero $ {DineroUsuario}[/]");
+            table.AddRow("1.", "Cambiar Nombre");
+            table.AddRow("2.", "Cambiar Contraseña");
+            table.AddRow("3.", "Agregar Dinero");
+            table.AddRow("4.", "Historial Cuenta");
+            table.AddRow("5.", "Cerrar Sesión");
+            table.AddRow("6.", "Eliminar Cuenta");
+            table.AddRow("", "");
+            table.AddRow("0.", "Volver Atrás");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero");
+                AnsiConsole.WriteLine("Ese no es un número");
                 opcion = Console.ReadLine();
             }
 
@@ -206,7 +219,7 @@ public class MenuOpciones
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
@@ -217,19 +230,21 @@ public class MenuOpciones
     {
         while (true)
         {
-            Console.WriteLine("+---------------------------+");
-            Console.WriteLine("| Cuenta de Administrador   |\n");
-            Console.WriteLine("| 1. Administrar Usuarios   |");
-            Console.WriteLine("| 2. Administrar Productos  |");
-            Console.WriteLine("| 0. Salir Cuenta           |");
-            Console.WriteLine("+---------------------------+");
+            var table = new Table();
+            table.AddColumn("[u]Cuenta de Administrador[/]");
+            table.AddRow("1. Administrar Usuarios");
+            table.AddRow("2. Administrar Productos");
+            table.AddRow("");
+            table.AddRow("0. Salir Cuenta");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero\n");
+                AnsiConsole.WriteLine("Esa no es una opción\n");
                 opcion = Console.ReadLine();
             }
 
@@ -249,31 +264,34 @@ public class MenuOpciones
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
     }
 
+
     public void MenurAdminUsuario()
     {
         while (true)
         {
-            Console.WriteLine("+---------------------------+");
-            Console.WriteLine("| Cuenta de Administrador   |\n");
-            Console.WriteLine("| 1. Lista de Usuarios      |");
-            Console.WriteLine("| 2. Buscar Usuarios        |");
-            Console.WriteLine("| 3. Añadir Usuario         |");
-            Console.WriteLine("| 4. Eliminar Usuario       |");
-            Console.WriteLine("| 0. atras                  |");
-            Console.WriteLine("+---------------------------+");
+            var table = new Table();
+            table.AddColumn("[u]Cuenta de Administrador[/]");
+            table.AddRow("1. Lista de Usuarios");
+            table.AddRow("2. Buscar Usuarios");
+            table.AddRow("3. Añadir Usuario");
+            table.AddRow("4. Eliminar Usuario");
+            table.AddRow("");
+            table.AddRow("0.Volver Atrás");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero\n");
+                AnsiConsole.WriteLine("Esa no es una opción\n");
                 opcion = Console.ReadLine();
             }
 
@@ -294,38 +312,42 @@ public class MenuOpciones
                     {
                         EliminarCuenta();
                     }
+
                     break;
                 case 0:
                     MenuAdministrador();
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
     }
 
+
     public void MenuAdminProducto()
     {
         while (true)
         {
-            Console.WriteLine("+---------------------------+");
-            Console.WriteLine("| Cuenta de Administrador   |\n");
-            Console.WriteLine("| 1. Lista de Productos     |");
-            Console.WriteLine("| 2. Buscar Productos       |");
-            Console.WriteLine("| 3. Anadir Producto        |");
-            Console.WriteLine("| 4. Modificar Producto     |");
-            Console.WriteLine("| 5. Eliminar Producto      |");
-            Console.WriteLine("| 0. atras                  |");
-            Console.WriteLine("+---------------------------+");
+            var table = new Table();
+            table.AddColumn("[u]Cuenta de Administrador[/]");
+            table.AddRow("1. Lista de Productos");
+            table.AddRow("2. Buscar Productos");
+            table.AddRow("3. Añadir Producto");
+            table.AddRow("4. Modificar Producto");
+            table.AddRow("5. Eliminar Producto");
+            table.AddRow("");
+            table.AddRow("0.Volver Atrás");
+
+            AnsiConsole.Write(table);
 
             string? opcion = Console.ReadLine();
             int numOption = 0;
 
             while (!int.TryParse(opcion, out numOption))
             {
-                Console.WriteLine("Ese no es un numero\n");
+                AnsiConsole.WriteLine("Esa no es una opción\n");
                 opcion = Console.ReadLine();
             }
 
@@ -359,18 +381,19 @@ public class MenuOpciones
                     break;
 
                 default:
-                    Console.WriteLine("Opción no válida. Inténtelo de nuevo.");
+                    AnsiConsole.WriteLine("[red]Opción no válida. Inténtelo de nuevo.[/]");
                     break;
             }
         }
     }
 
 
+
     protected void CrearCuenta()
     {
         try
         {
-            Console.WriteLine("\nCREANDO CUENTA\n");
+            AnsiConsole.WriteLine("\nCREANDO CUENTA\n");
 
             Console.Write("Crea un Nombre: ");
             string? nombre = Console.ReadLine();
@@ -380,11 +403,11 @@ public class MenuOpciones
 
             cuentaManager.CrearCuenta(nombre, contraseña);
 
-            Console.WriteLine("\nCuenta creada exitosamente.\n");
+            AnsiConsole.WriteLine("\n[green]Cuenta creada exitosamente.[/]\n");
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\n[red]Ocurrio un error: {e.Message}[/]\n");
         }
     }
 
@@ -394,41 +417,41 @@ public class MenuOpciones
         {
             try
             {
-                Console.WriteLine("\nAÑADIENDO PRODUCTO\n");
+                AnsiConsole.WriteLine("\nAÑADIENDO PRODUCTO\n");
 
-                Console.WriteLine("Escribe el nombre del producto.");
+                AnsiConsole.WriteLine("Escribe el nombre del producto.");
 
                 string? nombre = Console.ReadLine();
 
-                Console.WriteLine("Ponle un precio al producto.");
+                AnsiConsole.WriteLine("Ponle un precio al producto.");
                 string? precioConvert = Console.ReadLine();
                 decimal precio = 0;
 
                 while (!decimal.TryParse(precioConvert, out precio))
                 {
-                    Console.WriteLine("\nEse no es un numero.\n");
+                    AnsiConsole.WriteLine("\nEse no es un numero.\n");
                     precioConvert = Console.ReadLine();
                 }
 
                 cuentaProducto.CrearProducto(nombre, precio);
 
-                Console.WriteLine("\nProducto añadido exitosamente.\n");
+                AnsiConsole.WriteLine("\nProducto añadido exitosamente.\n");
             }
             catch (Exception e)
             {
-                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
 
         }
         else
         {
-            Console.WriteLine("\nEsta no es una cuenta ADMIN\n");
+            AnsiConsole.WriteLine("\nEsta no es una cuenta ADMIN\n");
         }
     }
 
     protected void IniciarSesion()
     {
-        Console.WriteLine("\nINICIANDO SESION\n");
+        AnsiConsole.WriteLine("\nINICIANDO SESION\n");
 
         Console.Write("Ingrese nombre de usuario: ");
         string? nombre = Console.ReadLine();
@@ -442,7 +465,7 @@ public class MenuOpciones
             if (nombre == "admin")
             {
                 NombreUsuario = nombre;
-                Console.WriteLine("\nInicio de sesión exitoso.\n");
+                AnsiConsole.WriteLine("\nInicio de sesión exitoso.\n");
                 MenuAdministrador();
             }
             else
@@ -450,14 +473,14 @@ public class MenuOpciones
                 NombreUsuario = nombre;
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
 
-                Console.WriteLine("\nInicio de sesión exitoso.\n");
+                AnsiConsole.WriteLine("\nInicio de sesión exitoso.\n");
 
                 MenuUsuario();
             }
         }
         else
         {
-            Console.WriteLine("\nInicio de sesión fallido.\n");
+            AnsiConsole.WriteLine("\nInicio de sesión fallido.\n");
         }
     }
 
@@ -466,7 +489,7 @@ public class MenuOpciones
         NombreUsuario = null;
         DineroUsuario = 0;
 
-        Console.WriteLine("\nSesion Cerrada Correctamente \n");
+        AnsiConsole.WriteLine("\nSesion Cerrada Correctamente \n");
 
         MenuGeneral();
     }
@@ -478,40 +501,40 @@ public class MenuOpciones
         {
             try
             {
-                Console.WriteLine("\nAÑADIENDO DINERO\n");
+                AnsiConsole.WriteLine("\nAÑADIENDO DINERO\n");
 
-                Console.WriteLine("Cuanto dinero quieres agregar");
+                AnsiConsole.WriteLine("Cuanto dinero quieres agregar");
                 string? convert = Console.ReadLine();
 
                 int dinero = 0;
 
                 while (!int.TryParse(convert, out dinero))
                 {
-                    Console.WriteLine("\nEse no es un numero.\n");
+                    AnsiConsole.WriteLine("\nEse no es un numero.\n");
                     convert = Console.ReadLine();
                 }
 
                 cuentaManager.AgregarDinero(NombreUsuario, dinero);
                 DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
 
-                Console.WriteLine("\nDinero añadido exitosamente.\n");
+                AnsiConsole.WriteLine("\nDinero añadido exitosamente.\n");
             }
             catch (Exception e)
             {
-                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
         }
         else
         {
-            Console.WriteLine("\nNo has iniciado sesion.\n");
+            AnsiConsole.WriteLine("\nNo has iniciado sesion.\n");
         }
     }
 
     protected void CambiarNombre()
     {
-        Console.WriteLine("\nCAMBIANDO NOMBRE\n");
+        AnsiConsole.WriteLine("\nCAMBIANDO NOMBRE\n");
 
-        Console.WriteLine("Escrime tu nuevo nombre: ");
+        AnsiConsole.WriteLine("Escrime tu nuevo nombre: ");
         string? nombreNuevo = Console.ReadLine();
 
 
@@ -521,19 +544,19 @@ public class MenuOpciones
 
             NombreUsuario = nombreNuevo;
 
-            Console.WriteLine("\nCambio de nombre exitoso.\n");
+            AnsiConsole.WriteLine("\nCambio de nombre exitoso.\n");
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un Error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un Error: {e.Message}\n");
         }
     }
 
     protected void CambiarContraseña()
     {
-        Console.WriteLine("\nCAMBIANDO CONTRASEÑA\n");
+        AnsiConsole.WriteLine("\nCAMBIANDO CONTRASEÑA\n");
 
-        Console.WriteLine("Escrime tu nueva Contrasena: ");
+        AnsiConsole.WriteLine("Escrime tu nueva Contrasena: ");
         string? nuevaContra = Console.ReadLine();
 
         try
@@ -542,11 +565,11 @@ public class MenuOpciones
 
             DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
 
-            Console.WriteLine("\nCambio de nombre exitoso.\n");
+            AnsiConsole.WriteLine("\nCambio de nombre exitoso.\n");
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un Error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un Error: {e.Message}\n");
         }
     }
 
@@ -556,23 +579,30 @@ public class MenuOpciones
         {
             if (NombreUsuario == "admin")
             {
-                Console.WriteLine("¿Que cuenta quieres Eliminar?\n");
+                AnsiConsole.WriteLine("¿Que cuenta quieres Eliminar?\n");
                 string? cuenta = Console.ReadLine();
 
-                cuentaManager.EliminarCuenta(cuenta);
-                Console.WriteLine("\nCuenta Eliminada exitisa.\n");
+                if (!string.IsNullOrWhiteSpace(cuenta))
+                {
+                    cuentaManager.EliminarCuenta(cuenta);
+                    AnsiConsole.WriteLine("\nCuenta Eliminada exitisa.\n");
+                }
+                else
+                {
+                    throw new Exception("No puedes poner vacios.");
+                }
             }
             else
             {
                 cuentaManager.EliminarCuenta(NombreUsuario);
-                Console.WriteLine("\nCuenta Eliminada exitisa.\n");
+                AnsiConsole.WriteLine("\nCuenta Eliminada exitisa.\n");
 
                 MenuGeneral();
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
         }
     }
 
@@ -580,30 +610,30 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("\nMODIFICANDO PRODUCTO\n");
+            AnsiConsole.WriteLine("\nMODIFICANDO PRODUCTO\n");
 
-            Console.WriteLine("¿Que producto modificara?: ");
+            AnsiConsole.WriteLine("¿Que producto modificara?: ");
             string? productoViejo = Console.ReadLine();
 
 
-            Console.WriteLine("Escriba el nuevo nombre: ");
+            AnsiConsole.WriteLine("Escriba el nuevo nombre: ");
             string? nuevoProducto = Console.ReadLine();
 
             cuentaProducto.ModificarNombreProducto(productoViejo, nuevoProducto);
-            Console.WriteLine("\nNombre cambiado exitosamente.\n");
+            AnsiConsole.WriteLine("\nNombre cambiado exitosamente.\n");
 
-            Console.WriteLine("Escriba el nuevo precio: ");
+            AnsiConsole.WriteLine("Escriba el nuevo precio: ");
             string? precioInput = Console.ReadLine();
 
             if (decimal.TryParse(precioInput, out decimal nuevoPrecio) && nuevoPrecio >= 0)
             {
                 cuentaProducto.ModificarPrecioProducto(nuevoProducto, nuevoPrecio);
-                Console.WriteLine("\nPrecio cambiado exitosamente.\n");
+                AnsiConsole.WriteLine("\nPrecio cambiado exitosamente.\n");
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
         }
     }
 
@@ -612,21 +642,25 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("\nELIMINANDO PRODUCTO\n");
+            AnsiConsole.WriteLine("\nELIMINANDO PRODUCTO\n");
 
-            Console.WriteLine("Escrime del producto a eliminar ");
+            AnsiConsole.WriteLine("Escrime del producto a eliminar ");
             string? eliminar = Console.ReadLine();
 
             if (!string.IsNullOrWhiteSpace(eliminar))
             {
                 cuentaProducto.EliminarProducto(eliminar);
-                Console.WriteLine("\nProducto Eliminado Exitosamente.\n");
+                AnsiConsole.WriteLine("\nProducto Eliminado Exitosamente.\n");
+            }
+            else
+            {
+                throw new Exception("No puedes poner vacios.");
             }
         }
         catch (Exception e)
         {
 
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
         }
     }
 
@@ -639,7 +673,7 @@ public class MenuOpciones
             try
             {
 
-                Console.WriteLine("Quieres Comprar: S/N ");
+                AnsiConsole.WriteLine("Quieres Comprar: S/N ");
                 string? confirmacion = Console.ReadLine();
 
                 if (confirmacion != "S" && confirmacion != "N" && confirmacion != "s" && confirmacion != "n")
@@ -650,9 +684,9 @@ public class MenuOpciones
                 if (confirmacion == "S" || confirmacion == "s")
                 {
 
-                    Console.WriteLine("\nCOMPRANDO PRODUCTO\n");
+                    AnsiConsole.WriteLine("\nCOMPRANDO PRODUCTO\n");
 
-                    Console.WriteLine("Escribe el nombre del producto\n");
+                    AnsiConsole.WriteLine("Escribe el nombre del producto\n");
 
                     string? producto = Console.ReadLine();
 
@@ -661,19 +695,19 @@ public class MenuOpciones
                     cuentaManager.RestarDinero(NombreUsuario, NombreProducto);
                     DineroUsuario = cuentaManager.ObtenerDineroUsuario(NombreUsuario);
 
-                    Console.WriteLine("Producto Comprado Correctamente.\n");
+                    AnsiConsole.WriteLine("Producto Comprado Correctamente.\n");
 
                 }
 
             }
             catch (Exception e)
             {
-                Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+                AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
             }
         }
         else
         {
-            Console.WriteLine("No has iniciado sesion.\n");
+            AnsiConsole.WriteLine("No has iniciado sesion.\n");
         }
     }
 
@@ -682,14 +716,14 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("¿Que deseas buscar?");
+            AnsiConsole.WriteLine("¿Que deseas buscar?");
             string? busqueda = Console.ReadLine();
 
             if (!string.IsNullOrWhiteSpace(busqueda))
             {
                 List<CuentaProductos> resultados = cuentaProducto.BuscarProductos(busqueda);
 
-                Console.WriteLine(cuentaProducto.ResultadosProducto(resultados));
+                AnsiConsole.WriteLine(cuentaProducto.ResultadosProducto(resultados));
 
                 return true;
             }
@@ -698,7 +732,7 @@ public class MenuOpciones
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
             return false;
         }
     }
@@ -707,14 +741,14 @@ public class MenuOpciones
     {
         try
         {
-            Console.WriteLine("¿Que usuario Buscas?");
+            AnsiConsole.WriteLine("¿Que usuario Buscas?");
             string? busqueda = Console.ReadLine();
 
             if (!string.IsNullOrWhiteSpace(busqueda))
             {
                 List<CuentaUsuarios> resultados = cuentaManager.BuscarUsuarios(busqueda);
 
-                Console.WriteLine(cuentaManager.ResultadosUsuario(resultados));
+                AnsiConsole.WriteLine(cuentaManager.ResultadosUsuario(resultados));
 
                 return true;
             }
@@ -723,24 +757,24 @@ public class MenuOpciones
         }
         catch (Exception e)
         {
-            Console.WriteLine($"\nOcurrio un error: {e.Message}\n");
+            AnsiConsole.WriteLine($"\nOcurrio un error: {e.Message}\n");
             return false;
         }
     }
 
     protected void HistorialUsuario()
     {
-        Console.WriteLine(cuentaManager.HistorialCuenta(NombreUsuario));
+        AnsiConsole.WriteLine(cuentaManager.HistorialCuenta(NombreUsuario));
     }
 
     protected void ListaProductos()
     {
 
-        Console.WriteLine(cuentaProducto.AlmacenProductos());
+        AnsiConsole.WriteLine(cuentaProducto.AlmacenProductos());
     }
 
     protected void ListaUsuarios()
     {
-        Console.WriteLine(cuentaManager.AlmacenUsuarios());
+        AnsiConsole.WriteLine(cuentaManager.AlmacenUsuarios());
     }
 }

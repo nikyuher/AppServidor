@@ -10,7 +10,7 @@
     "IdCuenta": 2,
     "Nombre": "nicolas",
     "Contrasena": "123",
-    "Dinero": 980,
+    "Dinero": 950,
     "HistorialCompra": [
       {
         "NombreCopia": "patata",
@@ -21,6 +21,11 @@
         "NombreCopia": "patata",
         "PrecioCopia": 10,
         "FechaCopia": "2023-12-14T04:34:00.8468252+01:00"
+      },
+      {
+        "NombreCopia": "carne",
+        "PrecioCopia": 50,
+        "FechaCopia": "2023-12-14T16:38:54.1114405+01:00"
       }
     ]
   },
